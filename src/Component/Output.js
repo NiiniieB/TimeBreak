@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GetTime from './GetTime';
 
 
 class Output extends Component {
@@ -19,6 +20,7 @@ class Output extends Component {
             );
         return(
             <div className= "output">
+                <GetTime />
                 <h3>{this.props.source.pseudo}</h3>
                 <p>{this.props.source.message}</p>
             </div>
