@@ -30,12 +30,18 @@ console.log(this.echange);
 }
   render() {
     return (
-      <div className ="chatapp">
+      <div>
         <h1>Time-Break</h1>
-        <Login className="login"/>
-        <Connecter className="connecter" source={this.echange}/>
-        <Output className="output" source={this.echange} />
-        <Input source={this.echange}callback={this.cestok}/>
+        <div className="chat">
+        <div className ="chatapp">
+          <Login className="login"/>
+          <Connecter className="connecter" source={this.echange}/>
+        </div>
+        <div className= "chatapp">
+          <Output className="output" source={this.echange} />
+          <Input source={this.echange}callback={this.cestok}/>
+        </div>
+        </div>
       </div>
     );
   }

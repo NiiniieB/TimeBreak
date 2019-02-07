@@ -10,13 +10,7 @@ class Output extends Component {
         
         }
     render(){
-        if (this.props.source.message.length<1)
-            return(
-                <div className= "output">
-                <h3></h3>
-                <p></p>
-                </div>
-            );
+
         return(
             <div className= "output">
                 <h3>{this.props.source.pseudo}</h3>
@@ -29,7 +23,7 @@ class Output extends Component {
 
 }
 export default Output;
-//test
+
 
 
 
