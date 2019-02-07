@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Output from './Component/Output';
 import Input from './Component/Input';
-import Transport from './Class/Transport.js';
+import TimeBreak from './Class/TimeBreak'
 import Connecter from './Component/Connecter';
 import Login from './Component/Login'
 import './App.css';
@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props){ 
     super(props);
 
-    this.echange=new Transport();
+    this.echange=new TimeBreak();
 
     this.state={modif:false}
 
