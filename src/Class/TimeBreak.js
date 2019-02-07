@@ -25,9 +25,19 @@ class TimeBreak {
    obj.create(avatar,pseudo);
    addUser (obj);
     */
-   addMessage(msg){
+    addMessage(msg){
        this.messages.push(msg);
-   }
+    }
+    // Cette fonction met à jour le message
+    setMessage =(str) => {
+        this.message = str;
+        console.log(str);
+    }
+    // Cette fonction met à jour le pseudo
+    setPseudo = (str) => {
+        this.pseudo = str;
+        console.log(str);
+    }
 }
 
 
