@@ -1,0 +1,27 @@
+.output {
+  border: 5px ridge #333333;
+  width: 600px;
+  height: 550px;
+
+  }
+  .input {
+    border: 5px ridge #333333;
+    width: 600px;
+    height: 100px;
+    margin-top: 5%;
+    }
+h1{
+  color:red;
+}
+ul{
+  
+  border: 5px ridge #333333;
+  width: 50px;
+  height: 100px;
+
+}
+.chatapp{
+  display: flex;
+  flex-direction: column;
+  
+}
