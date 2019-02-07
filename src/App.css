@@ -13,15 +13,19 @@
 h1{
   color:red;
 }
-ul{
+.connecter{
   
   border: 5px ridge #333333;
-  width: 50px;
-  height: 100px;
+  width: 150px;
+  height: 650px;
 
 }
 .chatapp{
   display: flex;
   flex-direction: column;
   
+}
+.chat{
+  display: flex;
+   
 }

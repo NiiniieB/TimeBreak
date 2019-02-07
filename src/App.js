@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Output from './Component/Output';
 import Input from './Component/Input';
-import Transport from './Class/Transport.js';
+import TimeBreak from './Class/TimeBreak'
 import Connecter from './Component/Connecter';
 import Login from './Component/Login'
 import './App.css';
@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props){ 
     super(props);
 
-    this.echange=new Transport();
+    this.echange=new TimeBreak();
 
     this.state={modif:false}
 
@@ -29,12 +29,18 @@ console.log(this.echange);
 }
   render() {
     return (
-      <div className ="chatapp">
+      <div>
         <h1>Time-Break</h1>
-        <Login className="login"/>
-        <Connecter className="connecter" source={this.echange}/>
-        <Output className="output" source={this.echange} sendTime={this.echangeTime} />
-        <Input source={this.echange}callback={this.cestok}/>
+        <div className="chat">
+        <div className ="chatapp">
+          <Login className="login"/>
+          <Connecter className="connecter" source={this.echange}/>
+        </div>
+        <div className= "chatapp">
+          <Output className="output" source={this.echange} sendTime={this.echangeTime} />
+          <Input source={this.echange}callback={this.cestok}/>
+        </div>
+        </div>
       </div>
     );
   }
