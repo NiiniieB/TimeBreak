@@ -15,7 +15,9 @@ class Output extends Component {
         return(
             <div className= "output">
                 <GetTime />
+                <h2>{this.props.source.avatar}</h2>
                 <h3>{this.props.source.pseudo}</h3>
+                <h3>{this.props.source.date}</h3>
                 <p>{this.props.source.message}</p>
             </div>
             
