@@ -26,7 +26,7 @@ class TimeBreak {
    addUser (obj);
     */
     addMessage(msg){
-       this.messages.push(msg);
+       this.message.push(msg);
     }
     // Cette fonction met à jour le message
     setMessage =(str) => {
