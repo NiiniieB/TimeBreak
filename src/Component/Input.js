@@ -1,24 +1,48 @@
 import React, { Component } from 'react';
-
+import Message from '../Class/Message';
 
 class Input extends Component {
-
-click = () => {
-    this.props.source.setMessage(document.getElementById("texte").value);
-    this.props.callback();
-
+constructor(props) {
+super(props);
 
 }
 
+addZero = (i) => {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
 
-    render(){
-        return(
-            <div>
-            <input id="texte" maxLength="180" className= "input"></input>
-            <button onClick = {this.click}>Sends</button>  
-            </div>
+ getTime = (time) => {
+   if (time === "true"){
+    var d = new Date();
+    var timeMsg = this.addZero(d.getHours()) + ":" + this.addZero(d.getMinutes()) + ":" + this.addZero(d.getSeconds());
+    return timeMsg;
+  } 
+  else{
+    return false;
+   }
+}
 
-       );
-    }
+click = () => {
+  let objMesg = new Message();
+  let objUser = this.props.source.users[this.props.source.users.length - 1];
+  objMesg.create(objUser,"",this.getTime("true"),document.getElementById("texte").value) ;
+  this.props.source.addMessage(objMesg);
+  this.props.callback();
+  }
+  
+
+
+render(){
+return(
+<div>
+<input id="texte" maxLength="180" className= "input"></input>
+<button onClick = {this.click}>Sends</button> 
+</div>
+
+);
+}
 }
 export default Input;
