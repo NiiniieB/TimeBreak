@@ -47,6 +47,5 @@ class TimeBreak {
 
 
 
-}
 
 export default TimeBreak;
