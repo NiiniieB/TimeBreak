@@ -3,13 +3,13 @@ class Message {
         //this.sender= new User();
         //this.receiver= new Receiver();
         this.date="";
-        this.message="";
+        this.text="";
     }
-    create(sender,receiver,date,message){
+    create(sender,receiver,date,text){
         this.sender=sender;
         this.receiver=receiver;
         this.date=date;
-        this.message=message;
+        this.text=text;
     }
 }
 
