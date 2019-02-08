@@ -13,7 +13,7 @@ class Connecter extends Component {
             
             <div className="connecter">
             
-        <ul> {this.props.source.users.map((user) => <li>{user.pseudo} : {user.avatar}</li>)}</ul>
+        <ul> {this.props.source.users.map((user) => <li>{user.pseudo} <img className="avatar" src={user.avatar}/></li>)}</ul>
             
             </div>
         

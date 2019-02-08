@@ -14,7 +14,7 @@ h1 {
 }
 .connecter {
   border: 5px ridge #333333;
-  width: 150px;
+  
   height: 650px;
 }
 .chatapp {
@@ -23,4 +23,8 @@ h1 {
 }
 .chat {
   display: flex;
+}
+.avatar{
+  width: 40px;
+  
 }

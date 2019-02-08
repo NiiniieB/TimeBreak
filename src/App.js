@@ -28,10 +28,10 @@ class App extends Component {
 
         <div className ="chatapp">
           <Login source={this.echange} callback={this.cestok}/>
-          <Connecter className="connecter" source={this.echange}callback={this.cestok}/>
+          <Connecter source={this.echange}callback={this.cestok}/>
         </div>
         <div className= "chatapp">
-          <Output className="output" source={this.echange}/>
+          <Output source={this.echange}/>
           <Input source={this.echange}callback={this.cestok}/>
         </div>
         </div>

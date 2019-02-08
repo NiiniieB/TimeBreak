@@ -6,7 +6,6 @@ class Login extends Component {
     super(props);
     let avatar = "";
     this.state = { avatar };
-    
   }
   getAvatar = () => {
     let pseudo = document.getElementById("pseudo").value;
@@ -18,20 +17,17 @@ class Login extends Component {
         // this.setState({ avatar: success.items[0].avatar_url });
 
           if (avatarGitHub.total_count > 0) {
-              if (avatarGitHub.items[0].login === pseudo) {
                   let user = new User();
-                  user.pseudo = pseudo;
-                  user.avatar = avatarGitHub;
+                  user.pseudo = avatarGitHub.items[0].login;
+                  user.avatar = avatarGitHub.items[0].avatar_url;
                   this.props.source.addUser(user);
                   this.props.callback();
-                  this.setState({ avatar: avatarGitHub.items[0].avatar_url });
+                  //this.setState({ avatar: avatarGitHub.items[0].avatar_url });
               } else {
                   alert("Error ! Wrong entry or avatar not found");
               }
-          } else {
-              this.setState({ avatar: avatarGitHub.items[0].avatar_url });
-          }
-      });
+          } 
+      );
   };
 
 
