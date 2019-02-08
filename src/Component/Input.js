@@ -10,19 +10,15 @@ click = () => {
 
     this.props.source.addMessage(document.getElementById("texte").value);
     this.props.callback();
+  };
 
-
-}
-
-
-    render(){
-        return(
-            <div>
-            <input id="texte" maxLength="180" className= "input"></input>
-            <button onClick = {this.click}>Sends</button>  
-            </div>
-
-       );
-    }
+  render() {
+    return (
+      <div>
+        <input id="texte" maxLength="180" className="input" />
+        <button onClick={this.click}>Sends</button>
+      </div>
+    );
+  }
 }
 export default Input;

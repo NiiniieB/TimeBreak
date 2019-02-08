@@ -1,27 +1,27 @@
 class TimeBreak {
-    constructor() {
-        this.messages=[];
-        this.users=[];
-        console.log(this.messages)
-        console.log(this.users)
+  constructor() {
+    this.messages = [];
+    this.users = [];
+    console.log(this.messages)
+    console.log(this.users)
+  }
 
+
+  // param = obj from User
+  // Renvoie false si usr est déjà existant
+  // Renvoie true si usr est rajouté correctement
+  addUser(usr) {
+    for (let i = 0; i < this.users.length; i++) {
+      if (this.users[i].pseudo === usr.pseudo) {
+        return false;
+      }
     }
+    this.users.push(usr);
+    return true;
+  }
 
 
-    // param = obj from User
-    // Renvoie false si usr est déjà existant
-    // Renvoie true si usr est rajouté correctement
-    addUser(usr) {
-        for (let i = 0; i < this.users.length; i++) {
-             if (this.users[i].pseudo === usr.pseudo) {
-                 return false;
-             }
-            
-        }
-        this.users.push(usr);
-        return true;
-    }
-     /*
+  /*
     Pour Eyal 
    let obj = new User() ;
    obj.create(avatar,pseudo);
@@ -47,7 +47,6 @@ class TimeBreak {
 
 
 
-
-
+}
 
 export default TimeBreak;

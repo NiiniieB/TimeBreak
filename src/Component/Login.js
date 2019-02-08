@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import User from "../Class/User";
 
 class Login extends Component {
   constructor(props) {
@@ -9,24 +9,33 @@ class Login extends Component {
     
   }
   getAvatar = () => {
-    const pseudo = document.getElementById("pseudo").value;
+    let pseudo = document.getElementById("pseudo").value;
     // console.log("https://api.github.com/search/users?q=" + pseudo);
     fetch("https://api.github.com/search/users?q=" + pseudo)
-      .then(success => success.json())
-      .then(success => {
-        console.log(success);
+      .then(avatarGitHub => avatarGitHub.json())
+      .then(avatarGitHub => {
+        console.log(avatarGitHub);
         // this.setState({ avatar: success.items[0].avatar_url });
-        if (success.total_count !== 1) {
-          if (success.items[0].login === pseudo) {
-            this.setState({ avatar: success.items[0].avatar_url });
+
+          if (avatarGitHub.total_count > 0) {
+              if (avatarGitHub.items[0].login === pseudo) {
+                  let user = new User();
+                  user.pseudo = pseudo;
+                  user.avatar = avatarGitHub;
+                  this.props.source.addUser(user);
+                  this.props.callback();
+                  this.setState({ avatar: avatarGitHub.items[0].avatar_url });
+              } else {
+                  alert("Error ! Wrong entry or avatar not found");
+              }
           } else {
-            alert("Error wrong entry or avatar not found");
+              this.setState({ avatar: avatarGitHub.items[0].avatar_url });
           }
-        } else {
-          this.setState({ avatar: success.items[0].avatar_url });
-        }
       });
   };
+
+
+
   render() {
     return (
       <div className="container">
@@ -39,7 +48,7 @@ class Login extends Component {
             onClick={this.getAvatar}
           />
         </form>
-        <img src={this.state.avatar} className={"img-thumbnail"} alt={""} />
+        {/*<img src={this.state.avatar} className={"img-thumbnail"} alt={""} />*/}
       </div>
     );
   }

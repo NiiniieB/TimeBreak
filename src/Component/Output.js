@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 
 
@@ -24,7 +25,3 @@ class Output extends Component {
 
 }
 export default Output;
-
-
-
-
