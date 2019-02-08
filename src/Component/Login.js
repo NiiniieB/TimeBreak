@@ -6,6 +6,7 @@ class Login extends Component {
     super(props);
     let avatar = "";
     this.state = { avatar };
+    
   }
   getAvatar = () => {
     let pseudo = document.getElementById("pseudo").value;

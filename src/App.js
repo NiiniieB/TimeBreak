@@ -25,18 +25,15 @@ class App extends Component {
       <div>
         <h1>Time-Break</h1>
         <div className="chat">
-          <div className="chatapp">
-            <Login source={this.echange} callback={this.cestok}/>
-            <Connecter className="connecter" source={this.echange} />
-          </div>
-          <div className="chatapp">
-            <Output
-              className="output"
-              source={this.echange}
-              sendTime={this.echangeTime}
-            />
-            <Input source={this.echange} callback={this.cestok} />
-          </div>
+
+        <div className ="chatapp">
+          <Login source={this.echange} callback={this.cestok}/>
+          <Connecter className="connecter" source={this.echange}callback={this.cestok}/>
+        </div>
+        <div className= "chatapp">
+          <Output className="output" source={this.echange}/>
+          <Input source={this.echange}callback={this.cestok}/>
+        </div>
         </div>
       </div>
     );

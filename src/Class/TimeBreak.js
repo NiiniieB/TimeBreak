@@ -1,10 +1,11 @@
-
-
 class TimeBreak {
   constructor() {
     this.messages = [];
     this.users = [];
+    console.log(this.messages)
+    console.log(this.users)
   }
+
 
   // param = obj from User
   // Renvoie false si usr est déjà existant
@@ -26,19 +27,24 @@ class TimeBreak {
    obj.create(avatar,pseudo);
    addUser (obj);
     */
-  addMessage(msg) {
-    this.message.push(msg);
-  }
-  // Cette fonction met à jour le message
-  setMessage = str => {
-    this.message = str;
-    console.log(str);
-  };
-  // Cette fonction met à jour le pseudo
-  setPseudo = str => {
-    this.pseudo = str;
-    console.log(str);
-  };
+    addMessage(msg){
+        
+
+       this.messages.push(msg);
+    }
+    // Cette fonction met à jour le message
+    setMessage =(str) => {
+        this.message = str;
+        console.log(str);
+    }
+    // Cette fonction met à jour le pseudo
+    setPseudo = (str) => {
+        this.pseudo = str;
+        console.log(str);
+    }
+}
+
+
 
 
 }

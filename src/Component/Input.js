@@ -1,8 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Message from '../Class/Message';
+
 
 class Input extends Component {
-  click = () => {
-    this.props.source.setMessage(document.getElementById("texte").value);
+
+click = () => {
+   // msg!new Message();
+    //msg.kjjj!""
+
+    this.props.source.addMessage(document.getElementById("texte").value);
     this.props.callback();
   };
 
