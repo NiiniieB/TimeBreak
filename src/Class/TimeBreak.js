@@ -27,10 +27,10 @@ class TimeBreak {
    obj.create(avatar,pseudo);
    addUser (obj);
     */
-    addMessage(msg){
-        
-
-       this.messages.push(msg);
+   addMessage(msg){
+    if (msg.text==="") return false;
+    this.messages.push(msg);
+    return true;
     }
     // Cette fonction met à jour le message
     setMessage =(str) => {

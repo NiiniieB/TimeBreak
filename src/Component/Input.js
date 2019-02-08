@@ -3,22 +3,29 @@ import Message from '../Class/Message';
 
 
 class Input extends Component {
+constructor(props) {
+super(props);
+
+}
 
 click = () => {
-   // msg!new Message();
-    //msg.kjjj!""
-
-    this.props.source.addMessage(document.getElementById("texte").value);
-    this.props.callback();
-  };
-
-  render() {
-    return (
-      <div>
-        <input id="texte" maxLength="180" className="input" />
-        <button onClick={this.click}>Sends</button>
-      </div>
-    );
+  let objMesg = new Message();
+  let objUser = this.props.source.users[0];
+  objMesg.create(objUser,"",Date(),document.getElementById("texte").value) ;
+  this.props.source.addMessage(objMesg);
+  this.props.callback();
   }
+  
+
+
+render(){
+return(
+<div>
+<input id="texte" maxLength="180" className= "input"></input>
+<button onClick = {this.click}>Sends</button> 
+</div>
+
+);
+}
 }
 export default Input;
