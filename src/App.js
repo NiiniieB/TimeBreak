@@ -34,10 +34,10 @@ console.log(this.echange);
         <div className="chat">
         <div className ="chatapp">
           <Login className="login"/>
-          <Connecter className="connecter" source={this.echange}/>
+          <Connecter className="connecter" source={this.echange}callback={this.cestok}/>
         </div>
         <div className= "chatapp">
-          <Output className="output" source={this.echange} sendTime={this.echangeTime} />
+          <Output className="output" source={this.echange}/>
           <Input source={this.echange}callback={this.cestok}/>
         </div>
         </div>

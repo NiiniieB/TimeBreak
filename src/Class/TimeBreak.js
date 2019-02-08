@@ -2,6 +2,8 @@ class TimeBreak {
     constructor() {
         this.messages=[];
         this.users=[];
+        console.log(this.messages)
+        console.log(this.users)
 
     }
 
@@ -26,7 +28,9 @@ class TimeBreak {
    addUser (obj);
     */
     addMessage(msg){
-       this.message.push(msg);
+        
+
+       this.messages.push(msg);
     }
     // Cette fonction met à jour le message
     setMessage =(str) => {
