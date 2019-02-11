@@ -14,7 +14,6 @@ class Login extends Component {
       .then(avatarGitHub => avatarGitHub.json())
       .then(avatarGitHub => {
         console.log(avatarGitHub);
-        // this.setState({ avatar: success.items[0].avatar_url });
 
           if (avatarGitHub.total_count > 0) {
                   let user = new User();
@@ -22,7 +21,6 @@ class Login extends Component {
                   user.avatar = avatarGitHub.items[0].avatar_url;
                   this.props.source.addUser(user);
                   this.props.callback();
-                  //this.setState({ avatar: avatarGitHub.items[0].avatar_url });
               } else {
                   alert("Error ! Wrong entry or avatar not found");
               }
@@ -30,12 +28,9 @@ class Login extends Component {
       );
   };
 
-
-
   render() {
     return (
       <div className="container">
-        <form>
           <input id="pseudo" type="text" />
           <input
             type="button"
@@ -43,8 +38,6 @@ class Login extends Component {
             value="Login"
             onClick={this.getAvatar}
           />
-        </form>
-        {/*<img src={this.state.avatar} className={"img-thumbnail"} alt={""} />*/}
       </div>
     );
   }
