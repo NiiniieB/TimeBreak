@@ -1,3 +1,4 @@
+/*inactif  */
 class GetTime {
     constructor() {
         this.date ="";
@@ -6,14 +7,13 @@ class GetTime {
         this.seconde="";
         this.timeMsg = "";
         console.log(this.timeMsg);
-
     }
-    addZero(i){
-        if (i < 10) {
-            i = "0" + i;
-        }
-        return i;
-    } 
+  addZero(i) {
+    if (i < 10) {
+      i = "0" + i;
+    }
+    return i;
+  }
 
     createTime(on){
         if(on === true){
@@ -26,7 +26,5 @@ class GetTime {
             return false;
         }
     }
-
-   
 }
 export default GetTime;
