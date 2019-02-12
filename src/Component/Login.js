@@ -21,18 +21,27 @@ class Login extends Component {
 					user.avatar = avatarGitHub.items[0].avatar_url;
 					this.props.source.addUser(user);
 					this.props.callback();
+					let reset = document.getElementById("reset").reset(); //Reset data from login field
 				} else {
 					alert("Error ! Wrong entry or avatar not found");
 				}
 			});
 	};
 
+	// This if for prevent refresh from enter
+		onSubmit (event) {
+		event.preventDefault();
+		}
 	render() {
 		return (
 			<div className="container">
+			<form id="reset" onSubmit={this.onSubmit}>
 				<input id="pseudo" type="text" />
 				<input type="button" className="btn btn-success" value="Login" onClick={this.getAvatar} />
+				</form>
+			
 			</div>
+			
 		);
 	}
 }
