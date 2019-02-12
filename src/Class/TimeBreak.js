@@ -2,8 +2,8 @@ class TimeBreak {
   constructor() {
     this.messages = [];
     this.users = [];
-    console.log(this.messages)
-    console.log(this.users)
+    console.log(this.messages);
+    console.log(this.users);
   }
 
 
