@@ -28,7 +28,7 @@ class Login extends Component {
 			});
 	};
 
-	// This if for prevent refresh from enter
+	// This is here for prevent refresh from enter
 		onSubmit (event) {
 		event.preventDefault();
 		}
