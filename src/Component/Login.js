@@ -29,19 +29,17 @@ class Login extends Component {
 	};
 
 	// This is here for prevent refresh from enter
-		onSubmit (event) {
+	onSubmit(event) {
 		event.preventDefault();
-		}
+	}
 	render() {
 		return (
 			<div className="container">
-			<form id="reset" onSubmit={this.onSubmit}>
-				<input id="pseudo" type="text" />
-				<input type="button" className="btn btn-success" value="Login" onClick={this.getAvatar} />
+				<form id="reset" onSubmit={this.onSubmit}>
+					<input id="pseudo" type="text" />
+					<input type="button" className="btn btn-success" value="Login" onClick={this.getAvatar} />
 				</form>
-			
 			</div>
-			
 		);
 	}
 }
