@@ -21,7 +21,7 @@ class Login extends Component {
 					user.avatar = avatarGitHub.items[0].avatar_url;
 					this.props.source.addUser(user);
 					this.props.callback();
-					let reset = document.getElementById("reset").reset(); //Reset data from login field
+					document.getElementById("reset").reset(); //Reset data from login field
 				} else {
 					alert("Error ! Wrong entry or avatar not found");
 				}
