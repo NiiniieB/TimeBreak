@@ -31,15 +31,20 @@ click = () => {
   objMesg.create(objUser,"",this.getTime("true"),document.getElementById("texte").value) ;
   this.props.source.addMessage(objMesg);
   this.props.callback();
+  document.getElementById("resetInput").reset(); //Reset data
   }
   
-
+  resetFunction(event) {
+		event.preventDefault();
+  }
 
 render(){
 return(
 <div>
-<input id="texte" maxLength="180" className= "input"></input>
-<button onClick = {this.click}>Sends</button> 
+  <form id="resetInput" onSubmit={this.resetFunction}>
+    <input id="texte" maxLength="180" className= "input"></input>
+    <button onClick = {this.click}>Sends</button> 
+  </form>
 </div>
 
 );
