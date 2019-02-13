@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Message from '../Class/Message';
-
+import Socket from '../Component/Socket' 
 class Input extends Component {
-constructor(props) {
-super(props);
 
-}
 
 addZero = (i) => {
   if (i < 10) {
@@ -30,6 +27,7 @@ click = () => {
   let objUser = this.props.source.users[this.props.source.users.length - 1]; // ObjUser correspond au tableau d'objets "users" dans TimeBreak avec avatar + pseudo de la derniere personne connecte (grâce au .lenght)
   objMesg.create(objUser,"",this.getTime("true"),document.getElementById("texte").value) ;
   this.props.source.addMessage(objMesg);
+  Socket.emit(JSON.stringify(objMesg));
   this.props.callback();
   document.getElementById("resetInput").reset(); //Reset data
   }

@@ -1,7 +1,7 @@
 class TimeBreak {
   constructor() {
-    this.messages = [];
-    this.users = [];
+    this.messages = []; // receive from class Message => sender, receiver, date, text
+    this.users = [];    // receive from class User => avatar, pseudo
     console.log(this.messages);
     console.log(this.users);
   }

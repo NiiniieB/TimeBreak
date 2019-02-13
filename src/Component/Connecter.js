@@ -2,11 +2,7 @@ import React, { Component } from "react";
 
 class Connecter extends Component {
 
-    constructor(props){
-        super(props);
 
-
-    }
     
     render(){
         return(
