@@ -37,7 +37,7 @@ class Login extends Component {
 			<div className="container">
 				<form id="reset" onSubmit={this.onSubmit}>
 					<input id="pseudo" type="text" />
-					<button onClick={this.getAvatar} className="btn btn-success" value="Login" >
+					<button onClick={this.getAvatar} className="btn btn-success" value="Login">
 						Login
 					</button>
 				</form>
