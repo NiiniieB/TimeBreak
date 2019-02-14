@@ -1,17 +1,18 @@
 .output {
   border: 5px ridge #333333;
-  width: 800px;
+  width: 900px;
   height: 550px;
+  overflow:auto;
 }
 .input {
   border: 5px ridge #333333;
-  width: 800px;
+  width: 900px;
   height: 100px;
   margin-top: 5%;
 }
 h1 {
   padding: 10px;
-  color: red;
+  color: black;
   text-align: center;
   border: 5px ridge #333333;
 }
@@ -28,23 +29,31 @@ h1 {
   display: flex;
   justify-content: space-around;
 }
-.avatar{
-  width: 60px;
-}
 .user{
-  color: red;
-  border: 3px ridge #333333;
-  padding: 3px;
   width: 100px;
-  border-radius: 50% 20% / 10% 40%;
   margin: 1%;
 }
 .msg{
-  border: 3px ridge #333333;
-  padding: 5px;
-  border-radius: 10% 10% 10% 10%;
-  width: 700px;
+  text-align:justify;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 10px;
+  border-radius: 25px;
+  background-color: #82ccdd;
+  padding: 10px;
 }
 .date{
-  color: red;
+  text-align:center;
+  color: black;
+	font-size: 10px;
+}
+.avatar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border:1.5px solid white;
+}
+
+li{
+  list-style:none;
 }
