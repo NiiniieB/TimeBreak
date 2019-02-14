@@ -7,9 +7,9 @@ class Connecter extends Component {
     render(){
         return(
             
-            <div className="connecter">
+            <div>
             
-        <ul> {this.props.source.users.map((user) => <li>{user.pseudo} <img alt="avatar" className="avatar" src={user.avatar}/></li>)}</ul>
+        <ul className="connecter"> {this.props.source.users.map((user) => <li className="user-list" >{user.pseudo} <img alt="avatar" className="avatar" src={user.avatar}/></li>)}</ul>
             
             </div>
         
