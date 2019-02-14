@@ -52,7 +52,7 @@ componentDidMount() {
       this.traitemessage();
     return (
       <div>
-        <h1>😎 Time-Break 😎</h1>
+        <h1>Time-Break </h1>
         <Login source={this.echange} callback={this.cestok}/>
         <div className="chat">
         <div className ="chatapp">
