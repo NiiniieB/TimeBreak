@@ -20,6 +20,7 @@ class Login extends Component {
 					user.pseudo = avatarGitHub.items[0].login
 					user.avatar = avatarGitHub.items[0].avatar_url
 					this.props.source.addUser(user)
+					this.props.source.me = user;
 					this.props.callback()
 					document.getElementById("reset").reset() //Reset data from login field
 				} else {

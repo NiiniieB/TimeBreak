@@ -41,7 +41,9 @@ componentDidMount() {
   }
 
   traitemessage=()=> {
-    this.echange.addMessage(this.state.message);
+    if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
+      this.echange.addMessage(this.state.message);
+    }
     this.setState({message:"{}"});
   }
 

@@ -1,5 +1,8 @@
+import User from "./User";
+
 class TimeBreak {
   constructor() {
+    this.me=new User();
     this.messages = []; // receive from class Message => sender, receiver, date, text
     this.users = [];    // receive from class User => avatar, pseudo
     console.log(this.messages);
