@@ -41,7 +41,7 @@ return(
 <div>
   <form id="resetInput" onSubmit={this.resetFunction}>
     <input id="texte" maxLength="180" className= "input"></input>
-    <button onClick = {this.click}>Sends</button> 
+    <button className="send" onClick = {this.click}></button> 
   </form>
 </div>
 
