@@ -7,6 +7,9 @@ import Login from "./Component/Login";
 import "./App.css";
 import Socket from "./Component/Socket";
 
+import audioReceive from "./sounds/souffle_air.mp3";
+import Sound from 'react-sound';
+
 
 
 
@@ -21,17 +24,19 @@ class App extends Component {
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
-
-    /*this.state = { date,etat,message,name };*/
-
     Socket.initsocket(this.address);
 }
 componentDidMount() {
   // configuration réception message
-  Socket.configuresocket((err, data) => this.setState({ message: JSON.parse(data) }));
+  Socket.configuresocket((err, data) => {
+    var jsonReceive = JSON.parse(data);
+    if (jsonReceive[0].type === 0 ){
+      this.setState({ message: jsonReceive[1]});
+    }
+  });
   //const event=new Event("#NEW#",0,0,0);
   // Socket.emit(" coucou je viens de me connecter ");
-};
+}
 
   cestok = () => {
     this.setState({ modif: !this.state.modif });
@@ -43,6 +48,7 @@ componentDidMount() {
   traitemessage=()=> {
     if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
       this.echange.addMessage(this.state.message);
+      this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
     }
     this.setState({message:"{}"});
   }
@@ -60,6 +66,10 @@ componentDidMount() {
         </div>
         <div className= "chatapp">
           <Output source={this.echange}/>
+          <Sound
+            url={audioReceive}
+            playStatus={this.playSound}
+            />
           <Input source={this.echange}callback={this.cestok}/>
         </div>
         </div>

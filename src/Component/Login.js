@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import User from "../Class/User"
+//import Socket from '../Component/Socket' 
 
 class Login extends Component {
 	constructor(props) {
@@ -21,6 +22,7 @@ class Login extends Component {
 					user.avatar = avatarGitHub.items[0].avatar_url
 					this.props.source.addUser(user)
 					this.props.source.me = user;
+					//Socket.emit(JSON.stringify([{"type":1},user]));
 					this.props.callback()
 					document.getElementById("reset").reset() //Reset data from login field
 				} else {

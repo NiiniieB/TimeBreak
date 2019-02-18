@@ -23,7 +23,6 @@ class TimeBreak {
     return true;
   }
 
-
   /*
     Pour Eyal 
    let obj = new User() ;
@@ -35,20 +34,5 @@ class TimeBreak {
     this.messages.push(msg);
     return true;
     }
-    // Cette fonction met à jour le message
-    setMessage =(str) => {
-        this.message = str;
-        console.log(str);
-    }
-    // Cette fonction met à jour le pseudo
-    setPseudo = (str) => {
-        this.pseudo = str;
-        console.log(str);
-    }
 }
-
-
-
-
-
 export default TimeBreak;
