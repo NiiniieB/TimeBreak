@@ -20,7 +20,7 @@ addZero = (i) => {
   else{
     return false;
    }
-}
+};
 
 click = () => {
   let objMesg = new Message();
