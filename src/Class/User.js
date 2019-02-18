@@ -8,13 +8,5 @@ class User {
     this.pseudo = pseudo;
   }
 
-  /*
-    Pour Eyal 
-   let obj = new User() ;
-   obj.create(avatar,pseudo);
-    */
-
-
-
 }
 export default User;
