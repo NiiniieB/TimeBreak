@@ -5,12 +5,12 @@ import Socket from "./Socket";
 
 class Login extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		let avatar = "";
-		this.state = {avatar}
+		this.state = {avatar};
 	}
 	getAvatar = () => {
-		let pseudo = document.getElementById("pseudo").value
+		let pseudo = document.getElementById("pseudo").value;
 		// console.log("https://api.github.com/search/users?q=" + pseudo);
 		fetch("https://api.github.com/search/users?q=" + pseudo)
 			.then((avatarGitHub) => avatarGitHub.json())
@@ -29,18 +29,18 @@ class Login extends Component {
 					alert("Error ! Wrong entry or avatar not found")
 				}
 			})
-	}
+	};
 
 	// This is here for prevent refresh from enter
-	onSubmit(event) {
+	static onSubmit(event) {
 		event.preventDefault()
 	}
 	render() {
 		return (
-			<div className="container">
-				<form id="reset" onSubmit={this.onSubmit}>
+			<div>
+				<form id="reset" onSubmit={Login.onSubmit}>
 					<input id="pseudo" type="text" />
-					<button onClick={this.getAvatar} className="btn btn-success" value="Login">
+					<button onClick={this.getAvatar}  value="Login">
 						Login
 					</button>
 				</form>
