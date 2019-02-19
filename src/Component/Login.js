@@ -26,21 +26,22 @@ class Login extends Component {
           this.props.source.me = user;
           Socket.emit(JSON.stringify([{ type: 1 }, user]));
           this.props.callback();
-          document.getElementById("reset").reset(); //Reset data from login field
+          // document.getElementById("reset").reset(); //Reset data from login field
         } else {
           alert("Error ! Wrong entry or avatar not found");
         }
       });
   };
 
-  // This is here for prevent refresh from enter
+	// This is here for prevent refresh from enter
   static onSubmit(event) {
     event.preventDefault();
   }
   render() {
+
     return (
       <div>
-        <form id="reset" onSubmit={Login.onSubmit}>
+        <form onSubmit={Login.onSubmit}>
           <input id="pseudo" type="text" />
           <button onClick={this.getAvatar} value="Login">
             Login
