@@ -9,7 +9,7 @@ import Socket from "./Component/Socket";
 
 import audioReceive from "./sounds/souffle_air.mp3";
 import Sound from 'react-sound';
-
+import Disconnect from "./Component/Disconnect";
 
 
 
@@ -92,6 +92,9 @@ componentDidMount() {
             />
           <Input source={this.echange} callback={this.cestok}/>
         </div>
+        </div>
+        <div className={"disconnect"}>
+          <Disconnect/>
         </div>
       </div>
       );
