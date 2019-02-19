@@ -46,7 +46,7 @@ componentDidMount() {
     console.log(this.state.modif);
     console.log(this.echange);
   
-  }
+  };
 
   traitemessage=()=> {
     if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
@@ -82,7 +82,7 @@ componentDidMount() {
         <h1>Time-Break </h1>
         <div className="chat">
         <div className ="chatapp">
-          <Connecter source={this.echange}callback={this.cestok}/>
+          <Connecter source={this.echange} callback={this.cestok}/>
         </div>
         <div className= "chatapp">
           <Output source={this.echange}/>
@@ -90,7 +90,7 @@ componentDidMount() {
             url={audioReceive}
             playStatus={this.playSound}
             />
-          <Input source={this.echange}callback={this.cestok}/>
+          <Input source={this.echange} callback={this.cestok}/>
         </div>
         </div>
       </div>
