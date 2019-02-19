@@ -13,14 +13,13 @@ import Sound from 'react-sound';
 
 
 
-
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.echange = new TimeBreak();
 
-    this.state = { modif: false, message: "{}", user : "{}" };
+    this.state = { modif: false, message: "{}", user : "{}"};
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
@@ -66,31 +65,37 @@ componentDidMount() {
 
 
 
-  render(){
-    if (this.state.message!=="{}")
+  render() {
+    if (this.state.message !== "{}")
       this.traitemessage();
-    if (this.state.user !=="{}")
+    if (this.state.user !== "{}")
       this.traitePseudo();
-    return (
-      <div>
-        <h1>Time-Break </h1>
-        <Login source={this.echange} callback={this.cestok}/>
-        <div className="chat">
-        <div className ="chatapp">
-          <Connecter source={this.echange} callback={this.cestok}/>
-        </div>
-        <div className= "chatapp">
-          <Output source={this.echange}/>
-          <Sound
-            url={audioReceive}
-            playStatus={this.playSound}
-            />
-          <Input source={this.echange} callback={this.cestok}/>
-        </div>
-        </div>
-      </div>
+    if (this.echange.me.pseudo ==="") {
+      console.log("I'm alive");
+      return (<Login source={this.echange} callback={this.cestok}/>);
+    }
+    else {
+      console.log("Log !");
+      return (
+          <div>
+            <h1>Time-Break </h1>
+            <div className="chat">
+              <div className="chatapp">
+                <Connecter source={this.echange} callback={this.cestok}/>
+              </div>
+              <div className="chatapp">
+                <Output source={this.echange}/>
+                <Sound
+                    url={audioReceive}
+                    playStatus={this.playSound}
+                />
+                <Input source={this.echange} callback={this.cestok}/>
+              </div>
+            </div>
+          </div>
       );
     }
+  }
   }
 
 //test github
