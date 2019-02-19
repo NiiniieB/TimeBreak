@@ -3,18 +3,13 @@ import Message from '../Class/Message';
 import Socket from '../Component/Socket' 
 class Input extends Component {
 
-
-addZero = (i) => {
-  if (i < 10) {
-    i = "0" + i;
-  }
-  return i;
-}
-
  getTime = (time) => {
    if (time === "true"){
-    var d = new Date();
-    var timeMsg = this.addZero(d.getHours()) + ":" + this.addZero(d.getMinutes()) + ":" + this.addZero(d.getSeconds());
+    let d = new Date();
+    let hourMsg = d.getHours().toString().padStart(2,0);
+    let minMsg =  d.getMinutes().toString().padStart(2,0);
+    let secMsg =  d.getSeconds().toString().padStart(2,0);
+    let timeMsg = hourMsg + ":" + minMsg + ":" + secMsg;
     return timeMsg;
   } 
   else{
