@@ -66,15 +66,20 @@ componentDidMount() {
 
 
 
-  render(){
-    if (this.state.message!=="{}")
+  render() {
+    if (this.state.message !== "{}")
       this.traitemessage();
-    if (this.state.user !=="{}")
+    if (this.state.user !== "{}")
       this.traitePseudo();
+    if (this.echange.me.pseudo ==="") {
+      console.log("I'm alive");
+      return (<Login source={this.echange} callback={this.cestok}/>);
+    }
+    else {
+      console.log("Log !");
     return (
       <div>
         <h1>Time-Break </h1>
-        <Login source={this.echange} callback={this.cestok}/>
         <div className="chat">
         <div className ="chatapp">
           <Connecter source={this.echange}callback={this.cestok}/>
@@ -92,6 +97,7 @@ componentDidMount() {
       );
     }
   }
+}
 
 //test github
 
