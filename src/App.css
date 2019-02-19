@@ -9,9 +9,12 @@
 }
 
 body{
-background: rgb(13,16,56);
-background: radial-gradient(circle, rgba(13,16,56,1) 7%, rgba(4,13,111,1) 44%, rgba(69,77,200,1) 70%, rgba(255,233,181,1) 96%);
-  width: 100%;
+/*background: rgb(13,16,56);
+background: radial-gradient(circle, rgba(13,16,56,1) 7%, rgba(4,13,111,1) 44%, rgba(69,77,200,1) 70%, rgba(255,233,181,1) 96%);*/
+background-image: linear-gradient(rgba(195, 29, 29, 0.335), rgba(255, 255, 0, 0.5)),url(./img/relax.jpg);
+background-repeat: no-repeat;
+background-size: 100% 115%;
+width: 100%;
 }
 .output {
   width: 900px;
@@ -130,6 +133,9 @@ padding: 2%;
  body{
   overflow:auto;
   width: 100%;
+  background-image: url(./img/zen2.jpg);
+  background-repeat: no-repeat;
+  background-size: 110% 100%;
  }
   .chat {
     display: flex;
@@ -149,11 +155,7 @@ width: 100%;
     opacity: 0,5;
   }
   .connecter {
-    overflow:auto;
-    border-radius: 25px;
-    background-color: rgba(0,0,0,0.4);
-    border: 5px ridge #ffe9b5;
-    opacity: 0,5;
-    width: 87%;
+    display: none;
   }
+
 }
