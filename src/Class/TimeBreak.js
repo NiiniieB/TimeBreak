@@ -23,12 +23,6 @@ class TimeBreak {
     return true;
   }
 
-  /*
-    Pour Eyal 
-   let obj = new User() ;
-   obj.create(avatar,pseudo);
-   addUser (obj);
-    */
    addMessage(msg){
     if (msg.text==="") return false;
     this.messages.push(msg);

@@ -20,7 +20,7 @@ class App extends Component {
 
     this.echange = new TimeBreak();
 
-    this.state = { modif: false, message: "{}" };
+    this.state = { modif: false, message: "{}", user : "{}" };
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
@@ -29,9 +29,12 @@ class App extends Component {
 componentDidMount() {
   // configuration réception message
   Socket.configuresocket((err, data) => {
-    var jsonReceive = JSON.parse(data);
+    let jsonReceive = JSON.parse(data);
     if (jsonReceive[0].type === 0 ){
       this.setState({ message: jsonReceive[1]});
+    }
+    if (jsonReceive[0].type === 1){
+      this.setState({user : jsonReceive[1]});
     }
   });
   //const event=new Event("#NEW#",0,0,0);
@@ -51,11 +54,23 @@ componentDidMount() {
       this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
     }
     this.setState({message:"{}"});
-  }
+  };
+
+
+  traitePseudo=()=> {
+    if (this.echange.me.pseudo !== this.state.user.pseudo){
+      this.echange.addUser(this.state.user);
+    }
+    this.setState({user:"{}"});
+  };
+
+
 
   render(){
     if (this.state.message!=="{}")
       this.traitemessage();
+    if (this.state.user !=="{}")
+      this.traitePseudo();
     return (
       <div>
         <h1>Time-Break </h1>
