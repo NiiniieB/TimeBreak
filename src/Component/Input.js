@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Message from '../Class/Message';
-import Socket from '../Component/Socket' 
+import Socket from '../Component/Socket'
 class Input extends Component {
 
 
@@ -9,13 +9,13 @@ addZero = (i) => {
     i = "0" + i;
   }
   return i;
-}
+};
 
  getTime = (time) => {
    if (time === "true"){
-    var d = new Date();
-    var timeMsg = this.addZero(d.getHours()) + ":" + this.addZero(d.getMinutes()) + ":" + this.addZero(d.getSeconds());
-    return timeMsg;
+       const d = new Date();
+       const timeMsg = this.addZero(d.getHours()) + ":" + this.addZero(d.getMinutes()) + ":" + this.addZero(d.getSeconds());
+       return timeMsg;
   } 
   else{
     return false;
@@ -30,18 +30,18 @@ click = () => {
   Socket.emit(JSON.stringify([{"type":0},objMesg]));
   this.props.callback();
   document.getElementById("resetInput").reset(); //Reset data
-  }
+  };
   
-  resetFunction(event) {
+  static resetFunction(event) {
 		event.preventDefault();
   }
 
 render(){
 return(
 <div>
-  <form id="resetInput" onSubmit={this.resetFunction}>
-    <input id="texte" maxLength="180" className= "input"></input>
-    <button className="send" onClick = {this.click}></button> 
+  <form id="resetInput" onSubmit={Input.resetFunction}>
+    <input id="texte" maxLength="180" className= "input"/>
+    <button className="send" onClick = {this.click}/>
   </form>
 </div>
 
