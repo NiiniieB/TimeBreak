@@ -39,14 +39,14 @@ componentDidMount() {
   });
   //const event=new Event("#NEW#",0,0,0);
   // Socket.emit(" coucou je viens de me connecter ");
-}
+};
 
   cestok = () => {
     this.setState({ modif: !this.state.modif });
     console.log(this.state.modif);
     console.log(this.echange);
   
-  }
+  };
 
   traitemessage=()=> {
     if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
@@ -77,7 +77,7 @@ componentDidMount() {
         <Login source={this.echange} callback={this.cestok}/>
         <div className="chat">
         <div className ="chatapp">
-          <Connecter source={this.echange}callback={this.cestok}/>
+          <Connecter source={this.echange} callback={this.cestok}/>
         </div>
         <div className= "chatapp">
           <Output source={this.echange}/>
@@ -85,7 +85,7 @@ componentDidMount() {
             url={audioReceive}
             playStatus={this.playSound}
             />
-          <Input source={this.echange}callback={this.cestok}/>
+          <Input source={this.echange} callback={this.cestok}/>
         </div>
         </div>
       </div>
