@@ -10,9 +10,10 @@ import Socket from "./Component/Socket";
 import audioReceive from "./sounds/souffle_air.mp3";
 import Sound from 'react-sound';
 
-const MESSAGE = 0;
-const LOGIN =1;
-const INIT =2;
+const INIT        = 0;
+//const VALIDMASTER = 1;
+const LOGIN       = 2; // Identifiant JSON pour Tablea Users (envoyer depuis Login)
+const MESSAGE     = 3; // Identifiant JSON pour Tableau Messages (envoyer depuis INPUT) 
 
 
 
@@ -22,12 +23,12 @@ class App extends Component {
 
     this.echange = new TimeBreak();
 
-    this.state = { modif: false, message: "{}", user: "{}"};
+    this.state = { modif: false, message: "{}", user: "{}", etat: INIT};
    
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
-    this.playSound ="";
+    this.playSound =""; // initalise le status du player.
 
     Socket.initsocket(this.address);
 }
@@ -41,16 +42,18 @@ componentDidMount() {
     if (jsonReceive[0].type === LOGIN){
       this.setState({user : jsonReceive[1]});
     }
-  });
-  
-  // const event=new Event("#NEW#",0,0,0);
-  // Socket.emit(JSON.stringify(event));
-  // // si personne connecté, on attend un peu
-  // setTimeout(function() { //Start the timer
-  //   if (this.state.etat===INIT)
-  //   this.setState({etat: VALIDMASTER}) 
-  //   }.bind(this), 2000);
+    if (jsonReceive[0].type === INIT){
 
+    }
+  });
+
+  Socket.emit(JSON.stringify([{"type":INIT},{"msg":"#NEW#"}]));
+  // si personne connecté, on attend un peu
+  /*setTimeout(function() { //Start the timer
+    if (this.state.etat===INIT)
+    this.setState({etat: VALIDMASTER}) 
+    }.bind(this), 2000);
+  */
 }
 
   cestok = () => {
@@ -67,9 +70,10 @@ componentDidMount() {
       this.echange.addMessage(this.state.message);
       this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
     }
-    else
-    this.playSound=Sound.status.STOPPED;
-    this.setState({message:"{}"});
+    else {
+      this.playSound=Sound.status.STOPPED; // Stop le son si la condition n'est pas bonne
+      this.setState({message:"{}"});
+    }
   };
 
 
