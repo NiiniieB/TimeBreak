@@ -22,7 +22,7 @@ class Login extends Component {
 					user.create(avatarGitHub.items[0].avatar_url, avatarGitHub.items[0].login );
 					this.props.source.addUser(user);
 					this.props.source.me = user;
-					Socket.emit(JSON.stringify([{"type":1},user]));
+					Socket.emit(JSON.stringify([{"type":2},user]));
 					this.props.callback();
 					document.getElementById("reset").reset() //Reset data from login field
 				} else {
