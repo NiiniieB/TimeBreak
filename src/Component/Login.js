@@ -24,7 +24,7 @@ class Login extends Component {
           );
           this.props.source.addUser(user);
           this.props.source.me = user;
-          Socket.emit(JSON.stringify([{ type: 1 }, user]));
+          Socket.emit(JSON.stringify([{ type: 2 }, user]));
           this.props.callback();
           // document.getElementById("reset").reset(); //Reset data from login field
         } else {
@@ -40,8 +40,9 @@ class Login extends Component {
   render() {
 
     return (
-      <div>
-        <form onSubmit={Login.onSubmit}>
+      <div className="login">
+        <form className="loginEnter" onSubmit={Login.onSubmit}>
+          <h1>Time-Break </h1>
           <input id="pseudo" type="text" />
           <button onClick={this.getAvatar} value="Login">
             Login
