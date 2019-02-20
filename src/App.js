@@ -9,13 +9,13 @@ import Socket from "./Component/Socket";
 import audioReceive from "./sounds/souffle_air.mp3";
 import Sound from 'react-sound';
 import Disconnect from "./Component/Disconnect";
+import User from "./Class/User";
 
-// const INIT        = 0;
-// const VALIDMASTER = 1;
-const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
+//const INIT        = 0;
+//const VALIDMASTER = 1;
+//const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
 const MESSAGE     = 3; // Identifiant JSON pour Tableau Messages (envoyer depuis INPUT) 
-
-
+const UPDATELOGIN = 4; 
 
 
 
@@ -25,7 +25,7 @@ class App extends Component {
 
     this.echange = new TimeBreak();
 
-    this.state = { modif: false, message: "{}", user: "{}" /*, etat: INIT */};
+    this.state = { modif: false, message: "{}", user: "{}"};
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
@@ -37,23 +37,21 @@ componentDidMount() {
   // configuration réception message
   Socket.configuresocket((err, data) => {
     let jsonReceive = JSON.parse(data);
-    if (jsonReceive[0].type === MESSAGE ){
+    if (jsonReceive[0].type === MESSAGE){
       this.setState({ message: jsonReceive[1]});
     }
-    if (jsonReceive[0].type === LOGIN){
-      this.setState({user : jsonReceive[1]});
+    // Reception de la Mise à jour des users 
+    if(jsonReceive[0].type === UPDATELOGIN){
+      this.echange.users = [];
+      for (let i = 0; i < jsonReceive[1].user.length; i++) {
+        let usr=new User();
+        usr.create(jsonReceive[1].user[i].avatar,jsonReceive[1].user[i].pseudo);
+        this.echange.users.push(usr);
+      }
+      this.cestok();
     }
-    // if (jsonReceive[0].type === INIT){
 
-    // }
   });
-// Socket.emit(JSON.stringify([{"type":INIT},{"msg":"#NEW#"}]));
-  // si personne connecté, on attend un peu
-  /*setTimeout(function() { //Start the timer
-    if (this.state.etat===INIT)
-    this.setState({etat: VALIDMASTER}) 
-    }.bind(this), 2000);
-  */
   
 }
 
