@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 
 class Disconnect extends Component {
-    constructor(props) {
-        super(props);
-        const disconnect = "";
-        this.state = { disconnect };
-    };
 
     render() {
-
         return (
             <div>
-                <button type="button" onClick={this.setState} value="Disconnect">Disconnect</button>
+                <form>
+                <input type={"submit"} value={"Disconnect"}/>
+                </form>
             </div>
         );
     }
 }
+
 export default Disconnect;
