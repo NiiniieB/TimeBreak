@@ -6,7 +6,7 @@ class Disconnect extends Component {
         return (
             <div>
                 <form>
-                <input type={"submit"} value={"Disconnect"}/>
+                <input className="disconnect" type={"submit"} value={"Disconnect"}/>
                 </form>
             </div>
         );
