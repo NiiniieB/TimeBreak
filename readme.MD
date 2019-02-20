@@ -16,7 +16,7 @@ Give examples
 
 ### Installing
 
-* please read [readme.md]()
+* please read [readme.md](https://github.com/NiiniieB/TimeBreak/blob/master/src/README.md)
 
 
 ## Built With
