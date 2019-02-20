@@ -4,37 +4,33 @@ import Socket from '../Component/Socket'
 class Input extends Component {
 
 
-addZero = (i) => {
-  if (i < 10) {
-    i = "0" + i;
-  }
-  return i;
-}
 
- getTime = (time) => {
-   if (time === "true"){
-    var d = new Date();
-    var timeMsg = this.addZero(d.getHours()) + ":" + this.addZero(d.getMinutes()) + ":" + this.addZero(d.getSeconds());
-    return timeMsg;
-  } 
-  else{
-    return false;
-   }
-};
+  getTime = (time) => {
+    if (time === "true"){
+     let d = new Date();
+     let hourMsg = d.getHours().toString().padStart(2,0);
+     let minMsg =  d.getMinutes().toString().padStart(2,0);
+     let secMsg =  d.getSeconds().toString().padStart(2,0);
+     let timeMsg = hourMsg + ":" + minMsg + ":" + secMsg;
+     return timeMsg;
+   } 
+   else{
+     return false;
+    }
+ };
 
-click = () => {
+ click = () => {
   let objMesg = new Message();
- // let objUser = this.props.source.users[this.props.source.users.length - 1]; // ObjUser correspond au tableau d'objets "users" dans TimeBreak avec avatar + pseudo de la derniere personne connecte (grâce au .lenght)
   objMesg.create(this.props.source.me,"",this.getTime("true"),document.getElementById("texte").value) ;
   this.props.source.addMessage(objMesg);
-  Socket.emit(JSON.stringify([{"type":0},objMesg]));
+  Socket.emit(JSON.stringify([{"type":3},objMesg]));
   this.props.callback();
   document.getElementById("resetInput").reset(); //Reset data
   }
   
   resetFunction(event) {
 		event.preventDefault();
-  }
+  };
 
 render(){
 return(
