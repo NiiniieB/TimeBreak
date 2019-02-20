@@ -100,7 +100,10 @@ componentDidMount() {
       console.log("Log !");
     return (
       <div>
-        <h1>Time-Break </h1>
+        <div className="navbar">
+        <h1 className="navitem">Time-Break </h1>
+          <Disconnect className="navitem"/>
+        </div>
         <div className="chat">
         <div className ="chatapp">
           <Connecter source={this.echange} callback={this.cestok}/>
@@ -114,9 +117,7 @@ componentDidMount() {
           <Input source={this.echange} callback={this.cestok}/>
         </div>
         </div>
-        <div className={"disconnect"}>
-          <Disconnect/>
-        </div>
+
       </div>
       );
     }
