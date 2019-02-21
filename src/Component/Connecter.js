@@ -9,7 +9,7 @@ class Connecter extends Component {
 
             
             <div>            
-        <ul className="connecter" id="menu"> {this.props.source.users.map((user) => <li className="user-list" >{user.pseudo} <img alt="avatar" className="avatar" src={user.avatar}/></li>)}</ul>
+        <ul className="connecter" id="menu"> {this.props.source.users.map((user) => <li key={"index"} className="user-list" >{user.pseudo} <img alt="avatar" className="avatar" src={user.avatar}/></li>)}</ul>
             
             </div>
         
