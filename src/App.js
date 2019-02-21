@@ -35,7 +35,7 @@ class App extends Component {
 }
 componentDidMount() {
   // configuration réception message
-  Socket.configuresocket((err, data) => {
+  Socket.emit((err, data) => {
     let jsonReceive = JSON.parse(data);
     if (jsonReceive[0].type === MESSAGE){
       this.setState({ message: jsonReceive[1]});
@@ -46,9 +46,9 @@ componentDidMount() {
       for (let i = 0; i < jsonReceive[1].user.length; i++) {
         let usr=new User();
         usr.create(jsonReceive[1].user[i].avatar,jsonReceive[1].user[i].pseudo);
-        this.echange.users.push(usr);
+        this.echange.addUser(usr);
       }
-      this.cestok();
+      this.cestok();  // rafraichissement de la page avec le state 
     }
 
   });
@@ -89,6 +89,7 @@ componentDidMount() {
     if (this.state.message !== "{}")
       this.traitemessage();
     if (this.state.user !== "{}")
+      //console.log("traitePseudo");
       this.traitePseudo();
     if (this.echange.me.pseudo ==="") {
       console.log("I'm alive");

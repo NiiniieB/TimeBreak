@@ -16,6 +16,13 @@ websocket.on('smessage',data => fct(null,data));
 static emit(str) {
 websocket.emit('message',str);
 }
+
+//Fonction verif Login
+static verif(str) {
+    console.log("fichier Socket read");
+    websocket.emit('verifLogin',str);
+    }
+
 }
 
 export default Socket;
