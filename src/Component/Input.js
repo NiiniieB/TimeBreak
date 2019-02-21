@@ -36,7 +36,8 @@ render(){
 return(
 <div>
   <form id="resetInput" onSubmit={this.resetFunction}>
-    <input id="texte" maxLength="180" className= "input"></input>
+    <input id="texte" maxLength="180" className= "input">
+    </input>
     <button className="send" onClick = {this.click}></button> 
   </form>
 </div>
