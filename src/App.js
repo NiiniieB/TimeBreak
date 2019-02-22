@@ -41,13 +41,18 @@ componentDidMount() {
     
     let jsonReceive = JSON.parse(data);
     
-    // if (jsonReceive[0].type === VALIDMASTER && this.state.etat === INIT){
-    //   console.log("historique des messages", jsonReceive[1].messages);
-    //   this.setState({ message: jsonReceive[1]});
-    //   this.setState({etat: VALIDMASTER});
-    //   // this.cestok();
-     
-    // }
+
+    if (jsonReceive[0].type === VALIDMASTER && this.state.etat === INIT){
+      this.echange.messages = [];
+      console.log("historique des messages clients", jsonReceive[1].messages);
+      jsonReceive[1].messages.map((msg) => {
+        this.setState({ message: msg});
+      });
+      
+      this.setState({etat: VALIDMASTER});
+    }
+    
+
     if (jsonReceive[0].type === MESSAGE){
       this.setState({ message: jsonReceive[1]});
        //Local Storage
@@ -78,15 +83,31 @@ componentDidMount() {
   };
 
   traitemessage=()=> {
-    if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
-      console.log(this.state.message);
-      this.echange.addMessage(this.state.message);
-      this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
+    // console.log('control tableau',this.state.message);
+    // si c'est un tableau
+    if(this.state.message.length){
+      if (this.echange.me.pseudo !== this.state.message[this.state.message.length -1].sender.pseudo){
+        console.log(this.state.message[this.state.message.length -1]);
+        this.echange.addMessage(this.state.message[this.state.message.length -1]);
+        this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
+      }
+      //si c'est un objet
+      else {
+        this.playSound=Sound.status.STOPPED; // Stop le son si la condition n'est pas bonne
+      }
+      this.setState({message:"{}"});
+    } else {
+      if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
+        console.log(this.state.message);
+        this.echange.addMessage(this.state.message);
+        this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
+      }
+      else {
+        this.playSound=Sound.status.STOPPED; // Stop le son si la condition n'est pas bonne
+      }
+      this.setState({message:"{}"});
     }
-    else {
-      this.playSound=Sound.status.STOPPED; // Stop le son si la condition n'est pas bonne
-    }
-    this.setState({message:"{}"});
+
 };
 
 
