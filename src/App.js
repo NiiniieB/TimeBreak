@@ -10,9 +10,10 @@ import audioReceive from "./sounds/souffle_air.mp3";
 import Sound from 'react-sound';
 import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
+import "./Responsive.css"
 
-//const INIT        = 0;
-//const VALIDMASTER = 1;
+const INIT        = 0;
+const VALIDMASTER = 1;
 //const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
 const MESSAGE     = 3; // Identifiant JSON pour Tableau Messages (envoyer depuis INPUT) 
 const UPDATELOGIN = 4; 
@@ -25,7 +26,7 @@ class App extends Component {
 
     this.echange = new TimeBreak();
 
-    this.state = { modif: false, message: "{}", user: "{}"};
+    this.state = { modif: false, message: "{}", user: "{}", etat: INIT};
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
@@ -34,12 +35,26 @@ class App extends Component {
     Socket.initsocket(this.address);
 }
 componentDidMount() {
+
   // configuration réception message
   Socket.configuresocket((err, data) => {
+    
     let jsonReceive = JSON.parse(data);
+    
+    // if (jsonReceive[0].type === VALIDMASTER && this.state.etat === INIT){
+    //   console.log("historique des messages", jsonReceive[1].messages);
+    //   this.setState({ message: jsonReceive[1]});
+    //   this.setState({etat: VALIDMASTER});
+    //   // this.cestok();
+     
+    // }
     if (jsonReceive[0].type === MESSAGE){
       this.setState({ message: jsonReceive[1]});
+       //Local Storage
+      localStorage.setItem('myHistoryMessage', JSON.stringify(this.echange.messages));
+      console.log('local Storage client',localStorage.getItem('myHistoryMessage'));
     }
+    
     // Reception de la Mise à jour des users 
     if(jsonReceive[0].type === UPDATELOGIN){
       this.echange.users = [];
@@ -50,7 +65,7 @@ componentDidMount() {
       }
       this.cestok();
     }
-
+  
   });
   
 }
@@ -100,7 +115,7 @@ componentDidMount() {
       <div>
         <div className="navbar">
         <h1 className="navitem">Time-Break </h1>
-          <Disconnect className="navitem"/>
+        <Disconnect className="navitem"/> 
         </div>
         <div className="chat">
         <div className ="chatapp">
@@ -113,6 +128,8 @@ componentDidMount() {
             playStatus={this.playSound}
             />
           <Input source={this.echange} callback={this.cestok}/>
+      
+
         </div>
         </div>
 

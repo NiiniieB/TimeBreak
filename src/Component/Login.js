@@ -40,15 +40,15 @@ class Login extends Component {
   render() {
 
     return (
-      <div className="login">
+      
         <form className="loginEnter" onSubmit={Login.onSubmit}>
           <h1>Time-Break </h1>
-          <input id="pseudo" type="text" />
+          <div className="toto">
+          <input id="pseudo" type="text" placeholder="Entrer votre pseudo Github" />
           <button onClick={this.getAvatar} value="Login">
-            Login
           </button>
+          </div>
         </form>
-      </div>
     );
   }
 }

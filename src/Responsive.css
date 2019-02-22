@@ -1,0 +1,128 @@
+@media only screen and (max-width: 600px) {
+#texte{
+      text-align: center;
+      font-size: 1em;
+      border-radius: 25px;
+      background-color: rgba(0,0,0,0.3);
+      margin-left: 2%;
+      width: 80%;
+    }
+body{
+        overflow:auto;
+        width: 300px;
+        height: 450px;
+        background-image: url(./img/relax2.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% 130%;
+      
+       }
+.navbar{
+        display:flex;
+        justify-content: space-around;
+        /*background-color: rgba(0,0,0,0.4);*/
+        color: #ffe9b5;
+        
+      
+      }
+::placeholder{
+  text-align: center;
+  color: #6f2015;
+}
+
+  
+.loginEnter input{
+      margin: 2% 2% 2% 2%;
+      border:3px ridge #6f2015;
+      font-size: 1em;
+      text-align: center;
+      height: 48px;
+      background-color:#6f91b6; 
+      
+  }
+.toto{
+    width: 100%;
+    margin: 50% 25% 20% 5%;
+    background-color: transparent;
+    border-radius: 25px;
+    background-color: rgba(0,0,0,0.3); 
+    border:3px ridge #6f2015;
+  }
+  
+.loginEnter button{
+      border:3px solid #6f2015;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      background-image: url(./img/power.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 5%;
+      margin-left: 1%;  
+  
+    }
+    .loginEnter h1{
+      text-align: center;
+      color: #6f2015;
+      border:3px ridge #6f2015;
+      width: 50%;
+      margin: 5% 0% 20% 35%;
+      font-size: 1.5em;
+      background-color: #6f91b6;
+      border-radius:25px;
+      
+    }
+
+    .msg{
+        text-align:justify;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 1%;
+        border-radius: 25px;
+        background-color: #ffe9b5;
+        padding: 10px;
+        overflow-wrap: break-word;
+      }
+    .chat {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-around;
+    }
+    .output{
+    height: 320px;
+    width: 350px;
+    overflow:auto;
+  }
+  .date{
+    text-align:center;
+    color: white;
+      font-size: 10px;
+  }
+  .send{
+    width:20px;
+    height:60px;
+    border-radius: 50%;
+    background-image:url(./img/paper-plane\ .png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: bottom;
+    border:0px;
+    padding: 20px;
+    
+    }
+
+  
+    .chatapp:nth-child(2){
+      border: 5px ridge #ffe9b5;
+      border-radius: 25px;
+      background-color: rgba(0,0,0,0.4);
+      width: 350px;
+      height: 445px;
+      opacity: 0,5;
+    }
+    .connecter {
+      display: none;
+    }
+  
+  }
