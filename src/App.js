@@ -47,15 +47,11 @@ componentDidMount() {
     if (jsonReceive[0].type === VALIDMASTER && this.state.etat === INIT){
       this.echange.messages = [];
       console.log("historique des messages clients", jsonReceive[1].messages);
-      jsonReceive[1].messages.map((msg) => this.setState({ message: msg}));
-      
-      this.setState({etat: VALIDMASTER});
+      jsonReceive[1].messages.map((msg) => this.setState({ message: msg, etat: VALIDMASTER}));
     }
-    
-
     if (jsonReceive[0].type === MESSAGE){
       this.setState({ message: jsonReceive[1]});
-       //Local Storage
+      //Local Storage
       localStorage.setItem('myHistoryMessage', JSON.stringify(this.echange.messages));
       console.log('local Storage client',localStorage.getItem('myHistoryMessage'));
     }
@@ -70,9 +66,7 @@ componentDidMount() {
       }
       this.cestok();
     }
-  
   });
-  
 }
 
   cestok = () => {
