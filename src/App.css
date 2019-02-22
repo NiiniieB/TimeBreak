@@ -11,7 +11,7 @@
 body{
 background-image: /*linear-gradient(rgba(195, 29, 29, 0.335), rgba(255, 255, 0, 0.5)),*/url(./img/relax.jpg);
 background-repeat: no-repeat;
-background-size: 100% 120%;
+background-size: 100% 100%;
 background-position: center;
 width: 100%;
 }
@@ -19,29 +19,26 @@ width: 100%;
   display:flex;
   justify-content: space-around;
   /*background-color: rgba(0,0,0,0.4);*/
-  color: #ffe9b5;
+  color: #6f2015;
   width: 70%;
   
 
 }
-.navbar h1 {
-  color: #ffe9b5;
-  font-size: 3em;
-}
+
 .output {
   width: 900px;
-  height: 600px;
+  height: 690px;
   overflow:auto;
 }
 .input {
-  width: 850px;
+  width: 90%;
   height: 100px;
 
   
 }
 .disconnect{
-  border: 2px ridge #ffe9b5;
-  margin-top:10%;
+  border: 2px ridge #6f2015;
+  margin-top:2%;
   text-align: center;
   font-size: 1em;
 }
@@ -51,22 +48,23 @@ width: 100%;
   overflow:auto;
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
-  border: 5px ridge #ffe9b5;
+  border: 5px ridge #6f2015;
   width: 250px;
-  height: 700px;
+  height: 760px;
 }
 .user-list{
   border-radius: 25px;
-  background-color: #ffe9b5;
+  background-color: #6f91b6;
   text-align: center;
   margin:5px 25px 10px 2px;
 }
 
 .chatapp:nth-child(2){
-  border: 5px ridge #ffe9b5;
+  border: 5px ridge #6f2015;
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
   opacity: 0,5;
+  width: 60%;
 }
 .chat {
   display: flex;
@@ -82,7 +80,7 @@ width: 100%;
   margin-bottom: auto;
   margin-left: 10px;
   border-radius: 25px;
-  background-color: #ffe9b5;
+  background-color: #6f91b6;
   padding: 10px;
   overflow-wrap: break-word;
 }
@@ -99,6 +97,7 @@ width: 100%;
 }
 .pseudo{
   color:white;
+  
 
 }
 
@@ -106,15 +105,15 @@ li{
   list-style:none;
 }
 .send{
-width:60px;
-height:60px;
-border-radius: 50%;
+  border:3px solid #6f2015;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
 background-image:url(./img/paper-plane\ .png);
-background-color: transparent;
+background-color: #6f2015;
 background-repeat: no-repeat;
 background-position-x: center;
 background-position-y: bottom;
-border:0px;
 padding: 2%;
 
 }
@@ -128,10 +127,15 @@ padding: 2%;
   font-size: 1.5em;
   text-align: center;
   height: 48px;
+  background-color:#6f91b6; 
 
 }
+::placeholder{
+  text-align: center;
+  color: #6f2015;
+}
 .toto{
-  margin: 20% 20% 20% 20%;
+  margin: 20% 20% 21.5% 20%;
   background-color: transparent;
   border-radius: 25px;
   background-color: rgba(0,0,0,0.3); 
@@ -151,7 +155,13 @@ padding: 2%;
 }
 .loginEnter h1{
     text-align: center;
-    color: #ffe9b5;
+    color: #6f2015;
+    border:3px ridge #6f2015;
+    width: 30%;
+    margin: 1% 0% 20% 35%;
+  background-color: #6f91b6;
+  border-radius: 25px;
+
   
 }
 

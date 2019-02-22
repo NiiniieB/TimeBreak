@@ -10,10 +10,11 @@
 body{
         overflow:auto;
         width: 300px;
-        height: 500px;
+        height: 450px;
         background-image: url(./img/relax2.jpg);
         background-repeat: no-repeat;
         background-position: center;
+        background-size: 100% 130%;
       
        }
 .navbar{
@@ -24,22 +25,24 @@ body{
         
       
       }
-      .navbar h1{
-        text-align: center;
-        color: #ffe9b5;
-        font-size: 1em;
-    }
+::placeholder{
+  text-align: center;
+  color: #6f2015;
+}
+
   
 .loginEnter input{
-      margin: 2% 0% 2% 2%;
+      margin: 2% 2% 2% 2%;
       border:3px ridge #6f2015;
       font-size: 1em;
       text-align: center;
       height: 48px;
+      background-color:#6f91b6; 
+      
   }
 .toto{
     width: 100%;
-    margin: 20% 5% 20% 5%;
+    margin: 50% 25% 20% 5%;
     background-color: transparent;
     border-radius: 25px;
     background-color: rgba(0,0,0,0.3); 
@@ -60,7 +63,13 @@ body{
     }
     .loginEnter h1{
       text-align: center;
-      color: #ffe9b5;
+      color: #6f2015;
+      border:3px ridge #6f2015;
+      width: 50%;
+      margin: 5% 0% 20% 35%;
+      font-size: 1.5em;
+      background-color: #6f91b6;
+      border-radius:25px;
       
     }
 
@@ -82,6 +91,7 @@ body{
     .output{
     height: 320px;
     width: 350px;
+    overflow:auto;
   }
   .date{
     text-align:center;
