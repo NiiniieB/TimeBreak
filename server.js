@@ -59,7 +59,6 @@ io.on('connection', (socket) => {
             if(historyMessage.length > 0){ // Moins de Bug avec condition supplémentaire : clients.length > 2
                 for (let i=0;i<clients.length;i++) {
                     if (clients[i].id !== socket.id) {
-                        console.log("test id client"+ socket.id);
                         console.log("envoi de l'historique à "+clients[i].pseudo + " ,id : "+ clients[i].id);
                         io.to(socket.id).emit('smessage',JSON.stringify([{"type" : VALIDMASTER},{"messages": historyMessage}]));   
                     }
