@@ -36,6 +36,7 @@ class App extends Component {
 
     Socket.initsocket(this.address);
 }
+
 componentDidMount() {
 
   // configuration réception message add
@@ -49,7 +50,7 @@ componentDidMount() {
       console.log("historique des messages clients", jsonReceive[1].messages);
       jsonReceive[1].messages.map((msg) => this.setState({ message: msg, etat: VALIDMASTER}));
     }
-    if (jsonReceive[0].type === MESSAGE){
+    else if (jsonReceive[0].type === MESSAGE){
       this.setState({ message: jsonReceive[1]});
       //Local Storage
       localStorage.setItem('myHistoryMessage', JSON.stringify(this.echange.messages));
