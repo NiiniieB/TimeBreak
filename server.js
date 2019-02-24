@@ -6,6 +6,15 @@ class Client {
     }
 }
 
+class HistoryMessage {
+    constructor(sender,receiver, date, text) {
+        this.sender=sender;
+        this.receiver=receiver;
+        this.date=date;
+        this.text=text;
+    }
+}
+
 const express = require('express')
 const http = require('http')
 const socketIO = require('socket.io')
@@ -36,47 +45,35 @@ io.on('connection', (socket) => {
     
     socket.on('message', function(msg) {
         let json = JSON.parse(msg);
-        
-        console.log("nombre de clients",clients.length);
-        
-        // Envoi de l'historique au nouveau client -- BUG sur l'envoie l'historique.
-        if(historyMessage.length !== 0 && clients.length > 2){
-            for (let i=0;i<clients.length;i++) {
-                if (clients[i].id!== socket.id) {
-                    console.log("envoi de l'historique à "+clients[i].pseudo + " ,id : "+ clients[i].id);
-                    // console.log("detail de l'historique",historyMessage);
-                    io.to(socket.id).emit('smessage',JSON.stringify([{"type" : VALIDMASTER},{"messages": historyMessage}]));   
-                }
-            }
-        }
+
         
         // Mise à jour des LOGIN
         if (json[0].type ===LOGIN) {
             clients.push(new Client(json[1].pseudo,json[1].avatar, socket.id));
             console.log(json[1].pseudo + " ( " + socket.id +" ) s'est identifié"); // Dernier User connecté
+            console.log("Personnes identifiées :",clients.length);
             console.log("détail des clients",clients); // Tableau des Users 
             io.emit('smessage',JSON.stringify([{"type":UPDATELOGIN},{"user": clients}]))
-            // if (msg.startsWith('##MASTER'))
+
+            // Envoi de l'historique au nouveau client -- BUG sur l'envoie l'historique.
+            if(historyMessage.length > 0){ // Moins de Bug avec condition supplémentaire : clients.length > 2
+                for (let i=0;i<clients.length;i++) {
+                    if (clients[i].id !== socket.id) {
+                        console.log("envoi de l'historique à "+clients[i].pseudo + " ,id : "+ clients[i].id);
+                        io.to(socket.id).emit('smessage',JSON.stringify([{"type" : VALIDMASTER},{"messages": historyMessage}]));   
+                    }
+                }
+            }
         }
+
         // Envois des messages
         if (json[0].type === MESSAGE){
             console.log(json[1].date + " : " + json[1].sender.pseudo + " : " + json[1].text);
-            io.emit('smessage',msg);
-            historyMessage.push(json[1]);
-            console.log('control push message server',historyMessage);
+            io.emit('smessage',msg); // Enbois les messages aux clients
+            historyMessage.push(new HistoryMessage(json[1].sender, json[1].receiver, json[1].date, json[1].text)); // Enregistre sur le serveur l'historique des messages
+            console.log('history Message server',historyMessage);
         }
-        // else {
-        //     // Vérifie si le client existe dans le tableau
-        //     for (let i=0;i<clients.length;i++) {
-        //         if (clients[i].pseudo===json[1].pseudo) {
-        //             console.log("envoi à "+json[1].sender+" de "+msg);
-        //             io.to(clients[i].id).emit(JSON.stringify([{type : VALIDMASTER},clients.slice(0,2)]));
-        //             return;
-        //         }
-        //     }
-        //     console.log("envoi all socket.id non trouvé "+msg);
-        //     io.emit(json);
-        // }
+ 
     });
     // supprime client lors déconnection
     socket.on('disconnect', function () {
@@ -85,7 +82,8 @@ io.on('connection', (socket) => {
         if (clients[i].id===socket.id) {
             clients.splice(i,1);
             io.emit('smessage',JSON.stringify([{"type":UPDATELOGIN},{user: clients}]))
-            console.log(clients);
+            console.log("détail des clients",clients); // Tableau des Users actualisé
+
             break;
         }
     })

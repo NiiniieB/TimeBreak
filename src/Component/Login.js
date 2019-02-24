@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import User from "../Class/User";
 import Socket from "./Socket";
+// module sweetalert2
+import Swal from 'sweetalert2'
 
 class Login extends Component {
   constructor(props) {
@@ -28,7 +30,12 @@ class Login extends Component {
           this.props.callback();
           // document.getElementById("reset").reset(); //Reset data from login field
         } else {
-          alert("Error ! Wrong entry or avatar not found");
+          Swal.fire({
+            title: 'Erreur !',
+            text: "Cet identifiant n'existe pas",
+            type: 'error',
+            confirmButtonText: 'OK'
+          })
         }
       });
   };
