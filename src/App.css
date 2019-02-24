@@ -176,36 +176,6 @@ li{
   padding: 2%;
 }
 
-.ya{
-  padding: 5px;
-  }
-  
-  .yo {
-  
-  display: flex;
-  left: 10%;
-  
-  
-  }
-  
-  .tata{
-  
-  border-radius: 50%;
-  left: 0%;
-  bottom: 30%;
-  }
-  
-  .list {
-  display:flex;
-  justify-content: space-around;
-  position : absolute;
-  left: 40%;
-  bottom: -10%;
-  flex-direction: row;
-  padding: 10px;
-  
-  
-  }
 
 
 

@@ -11,7 +11,7 @@ import Sound from 'react-sound';
 import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
 import "./Responsive.css"
-import Footer from "./Component/Footer";
+
 
 
 const INIT        = 0;
@@ -155,7 +155,7 @@ componentDidMount() {
 
         </div>
         </div>
-        <Footer/>
+       
        
 
       </div>
