@@ -11,10 +11,9 @@
   body{
     overflow:auto;
     width: 225px;
-    height: 600px;
-    background-image: url(./img/relax2.jpg);
-    background-position: center;
-    background-size: 120% 120%; 
+    height: 550px;
+    background-image: url(./img/relax2.jpg)no-repeat center fixed; ;
+    background-size: 100% 100%; 
   }
   .navbar{
     display:flex;
@@ -97,20 +96,20 @@
     border-radius: 25px;
     background-color: rgba(0,0,0,0.4);
     opacity: 0,5;
-    width: 300px;
-    height: 430px;
+    width: 250px;
+    height: 350px;
     margin-left: 20%;
     margin-right: -3%;
   }
   .output{
-    height: 320px;
-    width: 350px;
+    height: 280px;
+    width: 325px;
     overflow:auto;
 
   }
   .input {
     width: 80%;
-    height: 100px;
+    height: 60px;
   }
   .msg{
     text-align:justify;
@@ -137,7 +136,7 @@
     background-color: rgba(0,0,0,0.4);
     border: 5px ridge #6f2015;
     width: 30px;
-    height: 420px;
+    height: 350px;
     margin-left: 60%;
     
   }
@@ -177,8 +176,8 @@
   .send{
     border:3px solid #6f91b6;
     border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     background-image:url(./img/power.png);
     background-color: #6f2015;
     background-repeat: no-repeat;
@@ -187,5 +186,28 @@
     padding: 1%;
   
   }
+  /*Footer*/
+.FooterGithub{
+  text-align: center;
+  width: 50%;
+  height: 40px;
+  margin: 0% 0% 0% 50%;
+
+
+}
+  .ImgGithub{
+  border:3px ridge #6f2015;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  }
+  
+  .ListGithub {
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 0px;
+  }
+
 
   }
