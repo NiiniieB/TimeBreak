@@ -83,14 +83,16 @@ body{
   background-color: #6f91b6;
   border-radius: 25px;
 }
-.chatapp:nth-child(2){
+
+.chatapp:nth-child(3){
   border: 5px ridge #6f2015;
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
   opacity: 0,5;
-  width: 60%;
+  width: 45%;
   height: 610px;
 }
+
 .output {
   width: 900px;
   height: 500px;
@@ -125,7 +127,7 @@ body{
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
   border: 5px ridge #6f2015;
-  width: 250px;
+  width: 200px;
   height: 600px;
   margin-top: 1%;
 }
@@ -202,6 +204,75 @@ li{
   flex-direction: row;
   padding: 0px;
   }
+  /*Tetris*/
+  .chatapp:nth-child(2){
+    border: 5px ridge #6f2015;
+    border-radius: 25px;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0,5;
+    width: 30%;
+    height: 610px;
+  }
+
+  .game-block {
+    margin: 0;
+    padding: 0;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid #6f91b6;
+    }
+    .piece-i {
+    background-color: #EC858B;
+    }
+    .piece-j {
+    background-color: #F1B598;
+    }
+    .piece-l {
+    background-color: #F8EFAE;
+    }
+    .piece-o {
+    background-color: #B5A677;
+    }
+    .piece-s {
+    background-color: #816E56;
+    }
+    .piece-t {
+    background-color: #B77C72;
+    }
+    .piece-z {
+    background-color: #E3BE58;
+    }
+    .piece-preview {
+    background-color: #EEE;
+    }
+    .test{
+    display: flex;
+    position: absolute;
+    top: 19%;
+    right: 55%;
+    }
+    .titreJeu{
+      color: #6f2015;
+      font-size: 0.8em;;
+      text-align: center;
+      background-color: #6f91b6;
+      border:4px ridge #6f2015;
+      width: 30%;
+      height: 50px;
+      align-items: center;  
+      margin: 0%;
+    }
+    .score{
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+
+    }
+    .texteJeu{
+      display: flex;
+
+    }
 
   
   

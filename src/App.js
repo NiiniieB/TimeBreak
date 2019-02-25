@@ -24,6 +24,7 @@ import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
 import Footer from "./Component/Footer"
 import "./Responsive.css"
+const Tetris = require('react-tetris');
 
 
 
@@ -181,9 +182,52 @@ componentDidMount() {
           <Connecter source={this.echange} callback={this.cestok}/>
         </div>
         <div className= "chatapp">
+          <div>
+
+            <Tetris>
+              {({
+                HeldPiece,
+                Gameboard,
+                PieceQueue,
+                points,
+                linesCleared
+              }) => {
+                // Render it however you'd like
+                return (
+                  <div>
+                    {/* <HeldPiece /> */}
+                    <div className="texteJeu">
+                    <div className="titreJeu">
+                    <h1>Tetris</h1>
+                    </div>
+                    <div className="score">
+                      <p>Points: {points}</p>
+                      <p>Lines Cleared: {linesCleared}</p>
+                    </div>
+                    </div>
+                    <Gameboard />
+                    <div className="test">
+                    <PieceQueue />
+                    </div>
+                  </div>
+                )
+              }}
+            </Tetris>
+          </div>
+         
+        </div>
+        <div className= "chatapp">
           <Output source={this.echange}/>
-          
-          {
+          <Input source={this.echange} callback={this.cestok}/>
+      
+        </div>
+        </div>
+        <Footer/>
+        <div>
+
+        </div>
+        <div>
+                  {
           this.state.sound && // Rendu Conditionnel avec le state
           <Fragment> {/* pour permettre de ne peut pas ajouter de div*/}
             <SoundAlert
@@ -206,12 +250,7 @@ componentDidMount() {
               playStatus={this.playSoundSend}
               />
             </Fragment>}
-
-          <Input source={this.echange} callback={this.cestok}/>
-      
-        </div>
-        </div>
-        <Footer/>
+            </div>
       </div>
       );
     }
