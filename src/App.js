@@ -20,10 +20,14 @@ import receiveMsgSound from "./sounds/receiveMsgSound.mp3";
 import SoundSend from 'react-sound';
 import sendMsgSound from "./sounds/sendMsgSound.mp3";
 
+// CheckBox pour activer ou desactiver les sons
+import Checkbox from 'react-simple-checkbox';
+
 import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
 import Footer from "./Component/Footer"
 import "./Responsive.css"
+
 
 
 
@@ -174,6 +178,10 @@ componentDidMount() {
       <div>
         <div className="navbar">
         <h1 className="navitem">Time-Break </h1>
+        <Checkbox
+          value={this.state.sound}
+          onChange={() => this.setState({ sound: !this.state.sound })}
+        />
         <Disconnect className="navitem"/> 
         </div>
         <div className="chat">
