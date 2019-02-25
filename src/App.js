@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Output from "./Component/Output";
 import Input from "./Component/Input";
 import TimeBreak from "./Class/TimeBreak";
@@ -41,7 +41,7 @@ class App extends Component {
 
     this.echange = new TimeBreak();
 
-    this.state = { modif: false, message: "{}", user: "{}", etat: INIT};
+    this.state = { modif: false, message: "{}", user: "{}", etat: INIT, sound: true};
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
@@ -159,10 +159,11 @@ componentDidMount() {
       return (
       <div>
         <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
+        {this.state.sound &&
         <SoundAlert
             url={alertSoundLog}
             playStatus={this.playSoundAlert}
-            />
+            />}
         <Footer/>
         
       </div>);
@@ -182,35 +183,35 @@ componentDidMount() {
         <div className= "chatapp">
           <Output source={this.echange}/>
           
-          <SoundAlert
-            url={alertSoundLog}
-            playStatus={this.playSoundAlert}
-            />
-          
-          <SoundConnect
-            url={connectSound}
-            playStatus={this.playSoundLog}
-            />
-          
-          <SoundReceive
-            url={receiveMsgSound}
-            playStatus={this.playSoundReceive}
-            />
+          {
+          this.state.sound && // Rendu Conditionnel avec le state
+          <Fragment> {/* pour permettre de ne peut pas ajouter de div*/}
+            <SoundAlert
+              url={alertSoundLog}
+              playStatus={this.playSoundAlert}
+              />
+            
+            <SoundConnect
+              url={connectSound}
+              playStatus={this.playSoundLog}
+              />
+            
+            <SoundReceive
+              url={receiveMsgSound}
+              playStatus={this.playSoundReceive}
+              />
 
-          <SoundSend
-            url={sendMsgSound}
-            playStatus={this.playSoundSend}
-            />
+            <SoundSend
+              url={sendMsgSound}
+              playStatus={this.playSoundSend}
+              />
+            </Fragment>}
 
           <Input source={this.echange} callback={this.cestok}/>
       
-
         </div>
         </div>
         <Footer/>
-       
-       
-
       </div>
       );
     }
