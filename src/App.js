@@ -10,6 +10,7 @@ import audioReceive from "./sounds/souffle_air.mp3";
 import Sound from 'react-sound';
 import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
+import Footer from "./Component/Footer"
 import "./Responsive.css"
 
 
@@ -123,7 +124,11 @@ componentDidMount() {
       this.traitePseudo();
     if (this.echange.me.pseudo ==="") {
       console.log("I'm alive");
-      return (<Login  source={this.echange} callback={this.cestok}/>);
+      return (
+      <div>
+        <Login  source={this.echange} callback={this.cestok}/>
+        <Footer/>
+      </div>);
     }
     else {
       console.log("Log !");
@@ -148,6 +153,7 @@ componentDidMount() {
 
         </div>
         </div>
+        <Footer/>
        
        
 

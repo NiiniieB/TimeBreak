@@ -10,9 +10,10 @@
 body{
   background-image: /*linear-gradient(rgba(195, 29, 29, 0.335), rgba(255, 255, 0, 0.5)),*/url(./img/relax.jpg);
   background-repeat: no-repeat;
-  background-size: 100% 120%;
+  background-size: 100% 105%;
   background-position: center;
   width: 100%;
+  height: 100%;
 }
 .navbar{
   display:flex;
@@ -49,7 +50,7 @@ body{
 }
 
 .loginEnter input{
-  margin: 2% 0% 2% 25%;
+  margin: 2% 0% 2% 35%;
   border:3px ridge #6f2015;
   font-size: 1.5em;
   text-align: center;
@@ -57,7 +58,7 @@ body{
   background-color:#6f91b6; 
 }
 .toto{
-  margin: 20% 20% 21.5% 20%;
+  margin: 20% 20% 12% 20%;
   background-color: transparent;
   border-radius: 25px;
   background-color: rgba(0,0,0,0.3); 
@@ -79,7 +80,7 @@ body{
   color: #6f2015;
   border:3px ridge #6f2015;
   width: 30%;
-  margin: 1% 0% 20% 35%;
+  margin: 1% 0% 10% 35%;
   background-color: #6f91b6;
   border-radius: 25px;
 }
@@ -89,17 +90,17 @@ body{
   background-color: rgba(0,0,0,0.4);
   opacity: 0,5;
   width: 60%;
-  height: 790px;
+  height: 610px;
 }
 .output {
   width: 900px;
-  height: 680px;
+  height: 500px;
   overflow:auto;
 }
 .input {
   width: 90%;
   height: 100px;
-  margin-bottom: 1%;
+  margin-bottom: 5%;
 }
 .msg{
   text-align:justify;
@@ -125,7 +126,7 @@ body{
   background-color: rgba(0,0,0,0.4);
   border: 5px ridge #6f2015;
   width: 250px;
-  height: 775px;
+  height: 600px;
 }
 .date{
   text-align:center;
@@ -175,6 +176,39 @@ li{
   background-position-y: bottom;
   padding: 2%;
 }
+/*Footer*/
+.FooterGithub{
+  text-align: center;
+  color: #6f2015;
+  border:3px ridge #6f2015;
+  width: 50%;
+  height: 100px;
+  margin: 0% 0% 0% 27%;
+  background-color: #6f91b6;
+  border-radius: 25px;
+
+}
+.Github{
+  font-size: 1em;
+  margin: 1px 0px 0px 0px;
+}
+
+  .ImgGithub{
+  border:3px ridge #6f2015;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  }
+  
+  .ListGithub {
+  display:flex;
+  justify-content: space-around;
+  flex-direction: row;
+  padding: 10px;
+  }
+
+  
+ 
 
 
 
