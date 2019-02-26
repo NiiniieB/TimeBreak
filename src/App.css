@@ -13,6 +13,7 @@ body{
   background: url(./img/relax.jpg) no-repeat center fixed; 
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisée */
+  overflow: hidden;
 }
 .navbar{
   display:flex;
@@ -83,14 +84,16 @@ body{
   background-color: #6f91b6;
   border-radius: 25px;
 }
-.chatapp:nth-child(2){
+
+.chatapp:nth-child(3){
   border: 5px ridge #6f2015;
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
   opacity: 0,5;
-  width: 60%;
-  height: 610px;
+  width: 40%;
+  height: 620px;
 }
+
 .output {
   width: 900px;
   height: 500px;
@@ -106,11 +109,12 @@ body{
   text-align:justify;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 10px;
+  margin-left: 5px;
   border-radius: 25px;
   background-color: #6f91b6;
   padding: 10px;
   overflow-wrap: break-word;
+  width: 70%;
 }
 .chat {
   display: flex;
@@ -125,15 +129,15 @@ body{
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
   border: 5px ridge #6f2015;
-  width: 250px;
-  height: 600px;
+  width: 200px;
+  height: 620px;
   margin-top: 1%;
 }
 .date{
   text-align:center;
-  color: white;
+  color: #6f91b6;
   font-size: 10px;
-  margin-left: 5%;
+  margin-right: 30%;
   margin-top: 1%;
 }
 .avatar{
@@ -142,12 +146,23 @@ body{
   border-radius: 50%;
   border:1.5px solid white;
 }
+.avatarConnecter{
+  border:2px ridge #6f2015;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  background-color: #2ddb20;
+}
 .pseudo{
   color:white; 
 }
+.display{
+  color:white;
+}
 .user-list{
   border-radius: 25px;
-  background-color: #6f91b6;
+  background-color: transparent;
   text-align: center;
   margin:5px 25px 1px 2px;
   display: flex;
@@ -160,7 +175,8 @@ body{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 45%;
+  margin-left: 25%;
+  
 }
 li{
   list-style:none;
@@ -202,6 +218,102 @@ li{
   flex-direction: row;
   padding: 0px;
   }
+  /*Tetris*/
+  .chatapp:nth-child(2){
+    border: 5px ridge #6f2015;
+    border-radius: 25px;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0,5;
+    width: 30%;
+    height: 620px;
+  }
+
+  .game-block {
+    margin: 0;
+    padding: 0;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid rgba(111, 145, 182, 0.3);;
+    
+    }
+    .piece-i {
+    background-image: url(./img/cafe.png);
+    background-size: 1.5em 1.5em;
+    background-color: #6f2015;
+    border: 1px ridge white;
+    }
+    .piece-j {
+    background-image: url(./img/cookie.png);
+    background-size: 1.5em 1.5em;
+    background-color: #6f91b6;
+    border: 1px ridge white;
+    }
+    .piece-l {
+    background-image: url(./img/smiley.png);
+    background-size: 1.5em 1.5em;
+    background-color: #a29f30;
+    border: 1px ridge white;
+    }
+    .piece-o {
+    background-image: url(./img/dodo.png);
+    background-size: 1.5em 1.5em;
+    background-color: #70686d;
+    border: 1px ridge white;
+    }
+    .piece-s {
+    background-image: url(./img/clock.png);
+    background-size: 1.5em 1.5em;
+    background-color: #222935;
+    border: 1px ridge white;
+    }
+    .piece-t {
+    background-image: url(./img/cupcake.png);
+    background-size: 1.5em 1.5em;
+    background-color: white;
+    border: 1px ridge white;
+    }
+    .piece-z {
+    background-image: url(./img/croissant1.png);
+    background-size: 1.5em 1.5em;
+    background-color: #97733a;
+    border: 1px ridge white;
+    }
+    .piece-preview {
+    background-image: url(./img/casper.png);
+    background-size: 1.5em 1.5em;
+    background-color: #EEE;
+    border: 1px ridge white;
+    opacity: 0.5;
+    }
+    .test{
+      display: flex;
+      justify-content: center;
+      
+    }
+    .item{
+      border:4px ridge #6f2015;
+      margin-left: 1%;
+      margin-right: 1%;
+
+    }
+    .titreJeu{
+      color: white;
+      font-size: 0.8em;;
+      text-align: center;  
+      margin-left: 1%;
+    }
+    .score{
+      color: white;
+      display: flex;
+      justify-content: space-around;
+      width: 50%;
+
+    }
+    .texteJeu{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
 
   
   

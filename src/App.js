@@ -20,6 +20,8 @@ import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
 import Footer from "./Component/Footer"
 import "./Responsive.css"
+import Swal from "sweetalert2";
+const Tetris = require('react-tetris');
 
 
 
@@ -27,7 +29,8 @@ const INIT        = 0;
 const VALIDMASTER = 1;
 //const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
 const MESSAGE     = 3; // Identifiant JSON pour Tableau Messages (envoyer depuis INPUT) 
-const UPDATELOGIN = 4; 
+const UPDATELOGIN = 4;
+const ERRORLOGIN = 5;
 
 
 
@@ -81,6 +84,17 @@ componentDidMount() {
       this.cestok();
       this.soundNewLog(true);  // joue le son à chaque nouvelle personne connecté
     }
+    if(jsonReceive[0].type === ERRORLOGIN){
+      this.echange = new TimeBreak();
+      Swal.fire({
+        title: 'Erreur !',
+        text: "Cet identifiant existe déjà",
+        type: 'error',
+        confirmButtonText: 'OK'
+      });
+      this.cestok();
+    }
+
   });
 }
 
@@ -204,9 +218,51 @@ componentDidMount() {
         </div>
     
         <div className= "chatapp">
-          <Output source={this.echange}/>       
+
+          <div>
+
+            <Tetris>
+              {({
+                HeldPiece,
+                Gameboard,
+                PieceQueue,
+                points,
+                linesCleared
+              }) => {
+                // Render it however you'd like
+                return (
+                  <div>
+                    {/* <HeldPiece /> */}
+                    <div className="texteJeu">
+                    <div className="titreJeu">
+                    <h1>Tetris</h1>
+                    </div>
+                    <div className="score">
+                      <p>Points: {points}</p>
+                      <p>Lines Cleared: {linesCleared}</p>
+                    </div>
+                    </div>
+                    <div className="test">
+                    
+                     <div className="item"><Gameboard /></div>
+                     <div className="item"><PieceQueue /></div>
+                    </div>
+                  </div>
+                )
+              }}
+            </Tetris>
+          </div>
          
-         {/*SORTIE SON*/}
+        </div>
+        <div className= "chatapp">
+          <Output source={this.echange}/>
+          <Input source={this.echange} callback={this.cestok}/>
+      
+        </div>
+        </div>
+        <Footer/>
+        <div>
+          {/*SORTIE SON*/}
          {this.state.sound && // Rendu Conditionnel avec le state pour désactiver le son
             <Sound
               url={this.soundProject}
@@ -214,18 +270,14 @@ componentDidMount() {
               playFromPosition={0}
               />
          } {/*FIN DE SORTIE SON*/}
+        </div>
 
-          <Input source={this.echange} callback={this.cestok}/>
-      
-        </div>
-        </div>
-        <Footer/>
       </div>
       );
     }
   }
 }
 
-//test github
+
 
 export default App;

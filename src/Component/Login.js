@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import User from "../Class/User";
 import Socket from "./Socket";
 // module sweetalert2
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 class Login extends Component {
   constructor(props) {
@@ -33,30 +33,32 @@ class Login extends Component {
         } else {
           this.props.sound("play");
           Swal.fire({
-            title: 'Erreur !',
+            title: "Erreur !",
             text: "Cet identifiant n'existe pas",
-            type: 'error',
-            confirmButtonText: 'OK'
-          })
+            type: "error",
+            confirmButtonText: "OK"
+          });
         }
       });
   };
 
-	// This is here for prevent refresh from enter
+  // This is here for prevent refresh from enter
   static onSubmit(event) {
     event.preventDefault();
   }
   render() {
-
-    return ( 
-        <form className="loginEnter" onSubmit={Login.onSubmit}>
-          <h1>Time-Break </h1>
-          <div className="toto">
-          <input id="pseudo" type="text" placeholder="Entrer votre pseudo Github" />
-          <button onClick={this.getAvatar} value="Login">
-          </button>
-          </div>
-        </form>
+    return (
+      <form className="loginEnter" onSubmit={Login.onSubmit}>
+        <h1>Time-Break </h1>
+        <div className="toto">
+          <input
+            id="pseudo"
+            type="text"
+            placeholder="Entre ton pseudo Github"
+          />
+          <button onClick={this.getAvatar} value="Login" />
+        </div>
+      </form>
     );
   }
 }
