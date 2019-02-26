@@ -52,7 +52,7 @@ class Login extends Component {
         <form className="loginEnter" onSubmit={Login.onSubmit}>
           <h1>Time-Break </h1>
           <div className="toto">
-          <input id="pseudo" type="text" placeholder="Entrer votre pseudo Github" />
+          <input id="pseudo" type="text" placeholder="Entre ton pseudo Github" />
           <button onClick={this.getAvatar} value="Login">
           </button>
           </div>
