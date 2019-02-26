@@ -135,9 +135,9 @@ body{
 }
 .date{
   text-align:center;
-  color: white;
+  color: #6f91b6;
   font-size: 10px;
-  margin-left: 5%;
+  margin-right: 30%;
   margin-top: 1%;
 }
 .avatar{
@@ -145,6 +145,14 @@ body{
   width: 30px;
   border-radius: 50%;
   border:1.5px solid white;
+}
+.avatarConnecter{
+  border:2px ridge #6f2015;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  background-color: #2ddb20;
 }
 .pseudo{
   color:white; 
@@ -164,7 +172,8 @@ body{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 45%;
+  margin-left: 25%;
+  
 }
 li{
   list-style:none;
@@ -225,34 +234,50 @@ li{
     
     }
     .piece-i {
+    background-image: url(./img/cafe.png);
+    background-size: 1.5em 1.5em;
     background-color: #6f2015;
     border: 1px ridge white;
     }
     .piece-j {
+    background-image: url(./img/cookie.png);
+    background-size: 1.5em 1.5em;
     background-color: #6f91b6;
     border: 1px ridge white;
     }
     .piece-l {
+    background-image: url(./img/smiley.png);
+    background-size: 1.5em 1.5em;
     background-color: #a29f30;
     border: 1px ridge white;
     }
     .piece-o {
+    background-image: url(./img/dodo.png);
+    background-size: 1.5em 1.5em;
     background-color: #70686d;
     border: 1px ridge white;
     }
     .piece-s {
+    background-image: url(./img/clock.png);
+    background-size: 1.5em 1.5em;
     background-color: #222935;
     border: 1px ridge white;
     }
     .piece-t {
-    background-color: #926e67;
+    background-image: url(./img/cupcake.png);
+    background-size: 1.5em 1.5em;
+    background-color: white;
     border: 1px ridge white;
     }
     .piece-z {
+    background-image: url(./img/croissant1.png);
+    background-size: 1.5em 1.5em;
     background-color: #97733a;
     border: 1px ridge white;
     }
     .piece-preview {
+    background-image: url(./img/casper.png);
+    background-size: 1.5em 1.5em;
     background-color: #EEE;
     border: 1px ridge white;
     opacity: 0.5;
@@ -269,15 +294,9 @@ li{
 
     }
     .titreJeu{
-      color: #6f2015;
+      color: white;
       font-size: 0.8em;;
-      text-align: center;
-      background-color: #6f91b6;
-      border:4px ridge #6f2015;
-      border-radius: 25%;
-      width: 30%;
-      height: 50px;
-      align-items: center;  
+      text-align: center;  
       margin-left: 1%;
     }
     .score{
@@ -290,6 +309,7 @@ li{
     .texteJeu{
       display: flex;
       align-items: center;
+      justify-content: space-around;
     }
 
   
