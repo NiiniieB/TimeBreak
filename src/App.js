@@ -205,9 +205,10 @@ componentDidMount() {
                       <p>Lines Cleared: {linesCleared}</p>
                     </div>
                     </div>
-                    <Gameboard />
                     <div className="test">
-                    <PieceQueue />
+                    
+                     <div className="item"><Gameboard /></div>
+                     <div className="item"><PieceQueue /></div>
                     </div>
                   </div>
                 )

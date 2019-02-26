@@ -13,6 +13,7 @@ body{
   background: url(./img/relax.jpg) no-repeat center fixed; 
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisée */
+  overflow: hidden;
 }
 .navbar{
   display:flex;
@@ -89,8 +90,8 @@ body{
   border-radius: 25px;
   background-color: rgba(0,0,0,0.4);
   opacity: 0,5;
-  width: 45%;
-  height: 610px;
+  width: 40%;
+  height: 620px;
 }
 
 .output {
@@ -108,11 +109,12 @@ body{
   text-align:justify;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 10px;
+  margin-left: 5px;
   border-radius: 25px;
   background-color: #6f91b6;
   padding: 10px;
   overflow-wrap: break-word;
+  width: 70%;
 }
 .chat {
   display: flex;
@@ -128,7 +130,7 @@ body{
   background-color: rgba(0,0,0,0.4);
   border: 5px ridge #6f2015;
   width: 200px;
-  height: 600px;
+  height: 620px;
   margin-top: 1%;
 }
 .date{
@@ -211,7 +213,7 @@ li{
     background-color: rgba(0,0,0,0.4);
     opacity: 0,5;
     width: 30%;
-    height: 610px;
+    height: 620px;
   }
 
   .game-block {
@@ -219,37 +221,52 @@ li{
     padding: 0;
     width: 1.5em;
     height: 1.5em;
-    border: 1px solid #6f91b6;
+    border: 1px solid rgba(111, 145, 182, 0.3);;
+    
     }
     .piece-i {
-    background-color: #EC858B;
+    background-color: #6f2015;
+    border: 1px ridge white;
     }
     .piece-j {
-    background-color: #F1B598;
+    background-color: #6f91b6;
+    border: 1px ridge white;
     }
     .piece-l {
-    background-color: #F8EFAE;
+    background-color: #a29f30;
+    border: 1px ridge white;
     }
     .piece-o {
-    background-color: #B5A677;
+    background-color: #70686d;
+    border: 1px ridge white;
     }
     .piece-s {
-    background-color: #816E56;
+    background-color: #222935;
+    border: 1px ridge white;
     }
     .piece-t {
-    background-color: #B77C72;
+    background-color: #926e67;
+    border: 1px ridge white;
     }
     .piece-z {
-    background-color: #E3BE58;
+    background-color: #97733a;
+    border: 1px ridge white;
     }
     .piece-preview {
     background-color: #EEE;
+    border: 1px ridge white;
+    opacity: 0.5;
     }
     .test{
-    display: flex;
-    position: absolute;
-    top: 19%;
-    right: 55%;
+      display: flex;
+      justify-content: center;
+      
+    }
+    .item{
+      border:4px ridge #6f2015;
+      margin-left: 1%;
+      margin-right: 1%;
+
     }
     .titreJeu{
       color: #6f2015;
@@ -257,10 +274,11 @@ li{
       text-align: center;
       background-color: #6f91b6;
       border:4px ridge #6f2015;
+      border-radius: 25%;
       width: 30%;
       height: 50px;
       align-items: center;  
-      margin: 0%;
+      margin-left: 1%;
     }
     .score{
       color: white;
@@ -271,7 +289,7 @@ li{
     }
     .texteJeu{
       display: flex;
-
+      align-items: center;
     }
 
   
