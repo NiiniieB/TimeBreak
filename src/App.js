@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Output from "./Component/Output";
 import Input from "./Component/Input";
 import TimeBreak from "./Class/TimeBreak";
@@ -8,17 +8,13 @@ import "./App.css";
 import Socket from "./Component/Socket";
 
 //SOUNDS//
-import SoundAlert from 'react-sound';
+import Sound from 'react-sound';
+
 import alertSoundLog from "./sounds/errorLogSound.mp3";
-
-import SoundConnect from 'react-sound';
 import connectSound from "./sounds/connectSound.mp3";
-
-import SoundReceive from 'react-sound';
 import receiveMsgSound from "./sounds/receiveMsgSound.mp3";
-
-import SoundSend from 'react-sound';
 import sendMsgSound from "./sounds/sendMsgSound.mp3";
+
 
 import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
@@ -48,10 +44,9 @@ class App extends Component {
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
-    this.playSoundAlert=""; // player sound Alert Login
-    this.playSoundLog =""; // player Sound Login connect.
-    this.playSoundSend =""; // player Sound Send.
-    this.playSoundReceive =""; // player Sound Receive.
+    this.playSound=""; // player sound
+    this.soundProject=""; // url des sons
+    this.btnSoundName = "Son actif";
 
 
     Socket.initsocket(this.address);
@@ -71,6 +66,7 @@ componentDidMount() {
       jsonReceive[1].messages.map((msg) => this.setState({ message: msg, etat: VALIDMASTER}));
     }
     else if (jsonReceive[0].type === MESSAGE){
+      this.soundMesgReceive(true); // joue le son à chaque message reçu
       this.setState({ message: jsonReceive[1]});
       //Local Storage
       localStorage.setItem('myHistoryMessage', JSON.stringify(this.echange.messages));
@@ -81,12 +77,12 @@ componentDidMount() {
     if(jsonReceive[0].type === UPDATELOGIN){
       this.echange.users = [];
       for (let i = 0; i < jsonReceive[1].user.length; i++) {
-        this.playSoundLog = SoundConnect.status.PLAYING;
         let usr=new User();
         usr.create(jsonReceive[1].user[i].avatar,jsonReceive[1].user[i].pseudo);
         this.echange.users.push(usr);
       }
       this.cestok();
+      this.soundNewLog(true);  // joue le son à chaque nouvelle personne connecté
     }
     if(jsonReceive[0].type === ERRORLOGIN){
       this.echange = new TimeBreak();
@@ -98,7 +94,7 @@ componentDidMount() {
       });
       this.cestok();
     }
-    this.playSoundLog = SoundConnect.status.STOPPED;
+
   });
 }
 
@@ -115,14 +111,10 @@ componentDidMount() {
       if (this.echange.me.pseudo !== this.state.message[this.state.message.length -1].sender.pseudo){
         console.log(this.state.message[this.state.message.length -1]);
         this.echange.addMessage(this.state.message[this.state.message.length -1]);
-        this.playSoundReceive = SoundReceive.status.PLAYING; // joue le son à chaque message reçu
-        this.playSoundSend = SoundSend.status.STOPPED;
-
       }
     
       else {
-        this.playSoundSend = SoundSend.status.PLAYING; // joue le son à chaque message envoyé
-        this.playSoundReceive=SoundReceive.status.STOPPED; // Stop le son si la condition n'est pas bonne
+        this.soundMesgSend(true); // joue le son à chaque message envoyé
       }
       this.setState({message:"{}"});
     //si c'est un objet
@@ -130,12 +122,9 @@ componentDidMount() {
       if (this.echange.me.pseudo !== this.state.message.sender.pseudo){
         console.log(this.state.message);
         this.echange.addMessage(this.state.message);
-        this.playSoundReceive = SoundReceive.status.PLAYING; // joue le son à chaque message reçu
-        this.playSoundSend = SoundSend.status.STOPPED;
       }
       else {
-        this.playSoundSend = SoundSend.status.PLAYING; // joue le son à chaque message envoyé
-        this.playSoundReceive=SoundReceive.status.STOPPED; // Stop le son si la condition n'est pas bonne
+        this.soundMesgSend(true); // joue le son à chaque message envoyé
       }
       this.setState({message:"{}"});
     }
@@ -147,20 +136,47 @@ componentDidMount() {
       this.echange.addUser(this.state.user);
     }
     this.setState({user:"{}"});
-    this.playSoundLog = SoundConnect.status.STOPPED;
   };
+
+  initSound =()=>{
+    this.soundProject = "";
+  }
+
+  soundMesgReceive =(data)=>{
+    if (data){
+      this.soundProject = receiveMsgSound;
+      this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
+    }
+  }
+
+  soundMesgSend =(data)=>{
+    if (data){
+      this.soundProject = sendMsgSound;
+      this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
+    }
+  }
+
+  soundNewLog =(data)=>{
+    if (data){
+      this.soundProject = connectSound;
+      this.playSound = Sound.status.PLAYING; // joue le son à chaque message reçu
+    }
+  }
 
   AlertSound=(data)=>{ // Fonction sonore utlisée par le composant Login
     if (data === "play") {
-      this.playSoundAlert = SoundAlert.status.PLAYING;
-      console.log("play alert sound");
+      this.playSoundAlert = Sound.status.PLAYING;
     }
     else{
-      this.playSoundAlert = SoundAlert.status.STOPPED;
-      console.log("stop alert sound");
+      this.playSoundAlert = Sound.status.STOPPED;
     }
     this.cestok();
   };
+
+  switchSound =()=>{
+     this.setState({ sound: !this.state.sound });
+     this.btnSoundName = this.state.sound ? "Son désactivé" : "Son actif"; // checkbox On / Off
+    }
 
   render() {
     if (this.state.message !== "{}")
@@ -172,11 +188,12 @@ componentDidMount() {
       return (
       <div>
         <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
-        {this.state.sound &&
-        <SoundAlert
+        
+         {/* SORTIE SON ALERT */}
+        <Sound
             url={alertSoundLog}
             playStatus={this.playSoundAlert}
-            />}
+        />
         <Footer/>
         
       </div>);
@@ -187,13 +204,21 @@ componentDidMount() {
       <div>
         <div className="navbar">
         <h1 className="navitem">Time-Break </h1>
+        
+        {/* BOUTON DE DESACTIVATION SONORE POUR LE CHAT */}
+        <div>
+            <button type="button" onClick={this.switchSound}>{this.btnSoundName}</button>
+        </div>
+
         <Disconnect className="navitem"/> 
         </div>
         <div className="chat">
         <div className ="chatapp">
           <Connecter source={this.echange} callback={this.cestok}/>
         </div>
+    
         <div className= "chatapp">
+
           <div>
 
             <Tetris>
@@ -237,39 +262,22 @@ componentDidMount() {
         </div>
         <Footer/>
         <div>
-
+          {/*SORTIE SON*/}
+         {this.state.sound && // Rendu Conditionnel avec le state pour désactiver le son
+            <Sound
+              url={this.soundProject}
+              playStatus={this.playSound}
+              playFromPosition={0}
+              />
+         } {/*FIN DE SORTIE SON*/}
         </div>
-        <div>
-                  {
-          this.state.sound && // Rendu Conditionnel avec le state
-          <Fragment> {/* pour permettre de ne peut pas ajouter de div*/}
-            <SoundAlert
-              url={alertSoundLog}
-              playStatus={this.playSoundAlert}
-              />
-            
-            <SoundConnect
-              url={connectSound}
-              playStatus={this.playSoundLog}
-              />
-            
-            <SoundReceive
-              url={receiveMsgSound}
-              playStatus={this.playSoundReceive}
-              />
 
-            <SoundSend
-              url={sendMsgSound}
-              playStatus={this.playSoundSend}
-              />
-            </Fragment>}
-            </div>
       </div>
       );
     }
   }
 }
 
-//test github
+
 
 export default App;
