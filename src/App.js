@@ -25,6 +25,7 @@ const Tetris = require('react-tetris');
 
 
 
+
 const INIT        = 0;
 const VALIDMASTER = 1;
 //const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
@@ -46,7 +47,7 @@ class App extends Component {
 
     this.playSound=""; // player sound
     this.soundProject=""; // url des sons
-    this.btnSoundName = "Son actif";
+    this.btnSoundName = "SoundOn";
 
 
     Socket.initsocket(this.address);
@@ -88,7 +89,7 @@ componentDidMount() {
       this.echange = new TimeBreak();
       Swal.fire({
         title: 'Erreur !',
-        text: "Cet identifiant existe déjà",
+        text: "Cet identifiant est déjà connecté",
         type: 'error',
         confirmButtonText: 'OK'
       });
@@ -175,7 +176,7 @@ componentDidMount() {
 
   switchSound =()=>{
      this.setState({ sound: !this.state.sound });
-     this.btnSoundName = this.state.sound ? "Son désactivé" : "Son actif"; // checkbox On / Off
+     this.btnSoundName = this.state.sound ? "SoundOff" : "SoundOn"; // checkbox On / Off
     }
 
   render() {
@@ -203,13 +204,11 @@ componentDidMount() {
     return (
       <div>
         <div className="navbar">
-        <h1 className="navitem">Time-Break </h1>
-        
         {/* BOUTON DE DESACTIVATION SONORE POUR LE CHAT */}
-        <div>
-            <button type="button" onClick={this.switchSound}>{this.btnSoundName}</button>
+        <div className="navitem" >
+            <button className={this.btnSoundName} type="button" onClick={this.switchSound}></button>
         </div>
-
+        <h1 className="navitem">Time-Break </h1>
         <Disconnect className="navitem"/> 
         </div>
         <div className="chat">

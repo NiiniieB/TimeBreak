@@ -18,17 +18,17 @@ body{
 .navbar{
   display:flex;
   justify-content: space-around;
+  align-items: center;
   /*background-color: rgba(0,0,0,0.4);*/
   color: #6f2015;
   width: 100%;
 }
-.navitem:nth-child(1){
+.navitem:nth-child(2){
   font-size: 2,5em;
   color: #6f2015;
   text-align: center;
   border:3px ridge #6f2015;
   width: 50%;
-  margin: 1% 0% 3% 20%;
   background-color: #6f91b6;
   border-radius: 25px;
 }
@@ -71,6 +71,7 @@ body{
   height: 48px;
   background-image: url(./img/power.png);
   background-repeat: no-repeat;
+  background-size: 49px 50px;
   background-position: center;
   padding: 1%;
   margin-left: 1%;  
@@ -182,15 +183,15 @@ li{
   list-style:none;
 }
 .send{
-  border:3px solid #6f91b6;
+  border:3px solid #6f2015;
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  background-image:url(./img/power.png);
-  background-color: #6f2015;
+  background-image:url(./img/send.png);
+  background-color: white;
+  background-size: 43px 43px;
   background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: bottom;
+  background-position: center;
   padding: 2%;
 }
 /*Footer*/
@@ -313,6 +314,26 @@ li{
       display: flex;
       align-items: center;
       justify-content: space-around;
+    }
+
+    .SoundOn{
+
+      border-radius:50%;
+      border: 3px ridge #6f2015;
+      background-image: url(./img/SoundOn.png);
+      background-size: 45px 45px;
+      background-position: center;
+      width: 48px;
+      height: 48px;
+    }
+    .SoundOff{
+      border-radius:50%;
+      border: 3px ridge #6f2015;
+      background-image: url(./img/SoundOff.png);
+      background-size: 45px 45px;
+      background-position: center;
+      width: 48px;
+      height: 48px;
     }
 
   
