@@ -157,9 +157,12 @@ body{
 .pseudo{
   color:white; 
 }
+.display{
+  color:white;
+}
 .user-list{
   border-radius: 25px;
-  background-color: #6f91b6;
+  background-color: transparent;
   text-align: center;
   margin:5px 25px 1px 2px;
   display: flex;
