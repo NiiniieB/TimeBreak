@@ -24,6 +24,7 @@ import Disconnect from "./Component/Disconnect";
 import User from "./Class/User";
 import Footer from "./Component/Footer"
 import "./Responsive.css"
+import Swal from "sweetalert2";
 const Tetris = require('react-tetris');
 
 
@@ -32,7 +33,8 @@ const INIT        = 0;
 const VALIDMASTER = 1;
 //const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
 const MESSAGE     = 3; // Identifiant JSON pour Tableau Messages (envoyer depuis INPUT) 
-const UPDATELOGIN = 4; 
+const UPDATELOGIN = 4;
+const ERRORLOGIN = 5;
 
 
 
@@ -84,6 +86,16 @@ componentDidMount() {
         usr.create(jsonReceive[1].user[i].avatar,jsonReceive[1].user[i].pseudo);
         this.echange.users.push(usr);
       }
+      this.cestok();
+    }
+    if(jsonReceive[0].type === ERRORLOGIN){
+      this.echange = new TimeBreak();
+      Swal.fire({
+        title: 'Erreur !',
+        text: "Cet identifiant existe déjà",
+        type: 'error',
+        confirmButtonText: 'OK'
+      });
       this.cestok();
     }
     this.playSoundLog = SoundConnect.status.STOPPED;
