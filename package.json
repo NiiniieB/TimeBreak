@@ -1,0 +1,31 @@
+{
+  "name": "time-break",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4",
+    "npm": "^6.8.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.7.0",
+    "react-native-gifted-chat": "^0.7.2",
+    "react-sound": "^1.2.0",
+    "react-tetris": "^0.1.0",
+    "socket.io": "^2.2.0",
+    "sweetalert2": "^8.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
