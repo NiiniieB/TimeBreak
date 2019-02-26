@@ -32,7 +32,8 @@ const INIT        = 0;
 const VALIDMASTER = 1;
 const LOGIN       = 2; // Identifiant JSON pour Tableau Users (envoyer depuis Login)
 const MESSAGE     = 3; // Identifiant JSON pour Tableau Messages (envoyer depuis INPUT) 
-const UPDATELOGIN = 4; 
+const UPDATELOGIN = 4;
+const ERRORLOGIN = 5;
 
 //tableau clients
 let clients = [];
@@ -49,6 +50,12 @@ io.on('connection', (socket) => {
         
         // Mise à jour des LOGIN
         if (json[0].type ===LOGIN) {
+            for (let i=0;i<clients.length;i++)
+                if (clients[i].pseudo===json[1].pseudo) {
+                    io.to(socket.id).emit('smessage',JSON.stringify([{"type":ERRORLOGIN},{"user": clients}]));
+                    return;
+                }
+
             clients.push(new Client(json[1].pseudo,json[1].avatar, socket.id));
             console.log(json[1].pseudo + " ( " + socket.id +" ) s'est identifié"); // Dernier User connecté
             console.log("Personnes identifiées :",clients.length);
