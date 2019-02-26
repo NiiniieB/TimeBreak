@@ -30,7 +30,7 @@
     border:3px ridge #6f2015;
     width: 70%;
     height: 45px;
-    margin: 1% 5% 1% %;
+    margin: 1% 5% 1% 0%;
     background-color: #6f91b6;
     border-radius: 25px;
   }
@@ -91,19 +91,19 @@
     background-color: #6f91b6;
     border-radius:25px;
   }
-  .chatapp:nth-child(2){
+  .chatapp:nth-child(3){
     border: 5px ridge #6f2015;
     border-radius: 25px;
     background-color: rgba(0,0,0,0.4);
     opacity: 0,5;
-    width: 250px;
+    width: 290px;
     height: 350px;
-    margin-left: 20%;
-    margin-right: -3%;
+    margin-left: 0%;
+    margin-right: 0%;
   }
   .output{
     height: 280px;
-    width: 325px;
+    width: 300px;
     overflow:auto;
 
   }
@@ -122,23 +122,32 @@
   }
   .chat {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
     align-items: center;
   }
   ::placeholder{
     text-align: center;
     color: #6f2015;
   }
-  .connecter {
-    overflow:auto;
-    border-radius: 25px;
-    background-color: rgba(0,0,0,0.4);
-    border: 5px ridge #6f2015;
-    width: 30px;
+
+  .connecter{
+    border: none;
+    border-radius: none;
+    background-color: transparent;
+    opacity: 0,5;
+    width: 20px;
     height: 350px;
-    margin-left: 60%;
-    
+    margin-left: 0%;
+    margin-right: 10%;
+  }
+  .avatarConnecter{
+    border:2px ridge #6f2015;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    padding: 4px;
+    background-color: #2ddb20;
   }
 .display{
   display:none;
@@ -154,7 +163,7 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    border:1.5px solid white;
+    border:2px solid #6f2015;
     margin-right: 10%;
   }
   .pseudo{
@@ -187,27 +196,35 @@
   
   }
   /*Footer*/
-.FooterGithub{
-  text-align: center;
-  width: 50%;
-  height: 40px;
-  margin: 0% 0% 0% 50%;
-
-
-}
-  .ImgGithub{
-  border:3px ridge #6f2015;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  }
+  .FooterGithub{
+    position: absolute;
+    text-align: center;
+    width: 50%;
+    height: 50px;
+    margin: 0% 0% 0% 20%;
   
-  .ListGithub {
-  display:flex;
-  justify-content: space-around;
-  flex-direction: row;
-  padding: 0px;
+  
   }
+    .ImgGithub{
+    border:4px ridge #6f2015;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    padding: 4px;
+    background-color: #6f91b6;
+    }
+    
+    .ListGithub {
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 0px;
+    }
+
+    .chatapp:nth-child(2){
+      display:none;
+    }
+
 
 
   }
