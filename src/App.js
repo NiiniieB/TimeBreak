@@ -9,8 +9,10 @@ import Socket from "./Component/Socket";
 
 //SOUNDS//
 import Sound from 'react-sound';
+import SoundPseudo from 'react-sound';
 
 import alertSoundLog from "./sounds/errorLogSound.mp3";
+import alertSoundPseudo from "./sounds/errorPseudoSound.mp3";
 import connectSound from "./sounds/connectSound.mp3";
 import receiveMsgSound from "./sounds/receiveMsgSound.mp3";
 import sendMsgSound from "./sounds/sendMsgSound.mp3";
@@ -87,6 +89,7 @@ componentDidMount() {
     }
     if(jsonReceive[0].type === ERRORLOGIN){
       this.echange = new TimeBreak();
+      this.playSoundAlertPseudo = Sound.status.PLAYING;
       Swal.fire({
         title: 'Erreur !',
         text: "Cet identifiant est déjà connecté",
@@ -178,6 +181,19 @@ componentDidMount() {
      this.setState({ sound: !this.state.sound });
      this.btnSoundName = this.state.sound ? "SoundOff" : "SoundOn"; // checkbox On / Off
     }
+  switchRules =()=>{
+    Swal.fire({
+      title: 'Règles du jeu',
+      text:'Ceci est la rèle du jeu xxxxsdkljfsdmlkfsdlkjfsdlkfjsdlkfjsdlkfjsdlkfjsdlkfjsdlkfjsdlkfjsdlkjfsdlkjfsdlkjseldkfj',
+      width: 400,
+      padding: '3em',
+      background: '#fff url(/images/trees.png)',
+      backdrop:   `rgba(0,0,123,0.4)
+                  url("/images/nyan-cat.gif")
+                  center left
+                  no-repeat`
+    })
+  }
 
   render() {
     if (this.state.message !== "{}")
@@ -185,7 +201,7 @@ componentDidMount() {
     if (this.state.user !== "{}")
       this.traitePseudo();
     if (this.echange.me.pseudo ==="") {
-      console.log("I'm alive");
+      console.log("Client connecté");
       return (
       <div>
         <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
@@ -194,13 +210,19 @@ componentDidMount() {
         <Sound
             url={alertSoundLog}
             playStatus={this.playSoundAlert}
+            playFromPosition={0}
+        />
+        <SoundPseudo
+            url={alertSoundPseudo}
+            playStatus={this.playSoundAlertPseudo}
+            playFromPosition={0}
         />
         <Footer/>
         
       </div>);
     }
     else {
-      console.log("Log !");
+      console.log("Client Loggué !");
     return (
       <div>
         <div className="navbar">
@@ -235,6 +257,9 @@ componentDidMount() {
                     <div className="texteJeu">
                     <div className="titreJeu">
                     <h1>Tetris</h1>
+                    </div>
+                    <div>
+                    <button type="button" onClick={this.switchRules}>Règles du jeu</button>
                     </div>
                     <div className="score">
                       <p>Points: {points}</p>
