@@ -7,7 +7,7 @@
     "npm": "^6.8.0",
     "react": "^16.8.1",
     "react-dom": "^16.7.0",
-    "react-native-gifted-chat": "^0.7.2",
+    "react-scripts": "^2.1.5",
     "react-sound": "^1.2.0",
     "react-tetris": "^0.1.0",
     "socket.io": "^2.2.0",
