@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import Output from "./Component/Output";
 import Input from "./Component/Input";
 import TimeBreak from "./Class/TimeBreak";
@@ -43,8 +43,7 @@ class App extends Component {
 
     this.playSound=""; // player sound
     this.soundProject=""; // url des sons
-    
-    //this.btnSoundName = "Son actif";
+    this.btnSoundName = "Son actif";
 
 
     Socket.initsocket(this.address);
@@ -160,10 +159,10 @@ componentDidMount() {
     this.cestok();
   };
 
-  // switchSound =()=>{
-  //    this.setState({ sound: !this.state.sound });
-  //    this.btnSoundName = this.state.sound ? "Son désactivé" : "Son actif"; // checkbox On / Off
-  //   }
+  switchSound =()=>{
+     this.setState({ sound: !this.state.sound });
+     this.btnSoundName = this.state.sound ? "Son désactivé" : "Son actif"; // checkbox On / Off
+    }
 
   render() {
     if (this.state.message !== "{}")
@@ -175,7 +174,8 @@ componentDidMount() {
       return (
       <div>
         <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
-
+        
+         {/* SORTIE SON ALERT */}
         <Sound
             url={alertSoundLog}
             playStatus={this.playSoundAlert}
@@ -190,10 +190,11 @@ componentDidMount() {
       <div>
         <div className="navbar">
         <h1 className="navitem">Time-Break </h1>
-
-        {/* <div>
+        
+        {/* BOUTON DE DESACTIVATION SONORE POUR LE CHAT */}
+        <div>
             <button type="button" onClick={this.switchSound}>{this.btnSoundName}</button>
-        </div> */}
+        </div>
 
         <Disconnect className="navitem"/> 
         </div>
@@ -203,18 +204,16 @@ componentDidMount() {
         </div>
     
         <div className= "chatapp">
-          <Output source={this.echange}/>
-          
-         {/* {
-          this.state.sound && // Rendu Conditionnel avec le state*/}
+          <Output source={this.echange}/>       
+         
+         {/*SORTIE SON*/}
+         {this.state.sound && // Rendu Conditionnel avec le state pour désactiver le son
             <Sound
               url={this.soundProject}
               playStatus={this.playSound}
-              // onFinishedPlaying={this.initSound}
-              // playFromPosition={0}
+              playFromPosition={0}
               />
-          {/*
-          } */}
+         } {/*FIN DE SORTIE SON*/}
 
           <Input source={this.echange} callback={this.cestok}/>
       
