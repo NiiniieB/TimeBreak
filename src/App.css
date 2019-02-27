@@ -93,12 +93,15 @@ body{
   opacity: 0,5;
   width: 40%;
   height: 620px;
+  
 }
 
 .output {
   width: 900px;
   height: 500px;
   overflow:auto;
+  transform:rotate(180deg);
+  direction:rtl;
 }
 .input {
   width: 80%;
@@ -116,6 +119,7 @@ body{
   padding: 10px;
   overflow-wrap: break-word;
   width: 70%;
+  
 }
 .chat {
   display: flex;
@@ -177,7 +181,12 @@ body{
   justify-content: space-around;
   align-items: center;
   margin-left: 25%;
+
   
+}
+.rotateMsg{
+  transform:rotate(180deg);
+  direction:ltr;
 }
 li{
   list-style:none;
