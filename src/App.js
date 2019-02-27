@@ -183,15 +183,19 @@ componentDidMount() {
     }
   switchRules =()=>{
     Swal.fire({
-      title: 'Règles du jeu',
-      text:'Ceci est la rèle du jeu xxxxsdkljfsdmlkfsdlkjfsdlkfjsdlkfjsdlkfjsdlkfjsdlkfjsdlkfjsdlkfjsdlkjfsdlkjfsdlkjseldkfj',
-      width: 400,
-      padding: '3em',
-      background: '#fff url(/images/trees.png)',
-      backdrop:   `rgba(0,0,123,0.4)
-                  url("/images/nyan-cat.gif")
-                  center left
-                  no-repeat`
+      title: '',
+      html:
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/powerpoint.png"></img><div style="margin:10px;">Mettre le jeu en Pause</div></div></br>  ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/long-arrow-right.png"></img><div style="margin:10px;">Droite</div></div>' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/left-squared.png"></img><div style="margin:10px;">Gauche</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/up-squared.png"></img><div style="margin:10px;">Tourner les blocs</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/wired/48/000000/c.png"></img><div style="margin:10px;">Changer de bloc(3*)</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/dotty/48/000000/space-shuttle.png"></img><div style="margin:10px;">Descendre rapidement</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/down-squared.png"></img><div style="margin:10px;">Descendre directement</div></div></br> ',
+      width: 500,
+      padding: '0em 10em 0em 10em',
+      background: '#6f91b6',
+      backdrop:   `rgba(0,0,123,0.4)`
     })
   }
 
@@ -259,11 +263,11 @@ componentDidMount() {
                     <h1>Tetris</h1>
                     </div>
                     <div>
-                    <button type="button" onClick={this.switchRules}>Règles du jeu</button>
+                    <button className="help" type="button" onClick={this.switchRules}></button>
                     </div>
                     <div className="score">
-                      <p>Points: {points}</p>
-                      <p>Lines Cleared: {linesCleared}</p>
+                      <div>Points: {points}</div>
+                      <div>Lines Cleared: {linesCleared}</div>
                     </div>
                     </div>
                     <div className="test">
