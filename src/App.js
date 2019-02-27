@@ -10,6 +10,7 @@ import Socket from "./Component/Socket";
 //SOUNDS//
 import Sound from 'react-sound';
 import SoundPseudo from 'react-sound';
+import SoundLog from 'react-sound';
 
 import alertSoundLog from "./sounds/errorLogSound.mp3";
 import alertSoundPseudo from "./sounds/errorPseudoSound.mp3";
@@ -47,8 +48,12 @@ class App extends Component {
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
-    this.playSound=""; // player sound
+    this.playSound= Sound.status.STOPPED; // player sound
     this.soundProject=""; // url des sons
+
+    this.playSoundAlert = SoundLog.status.STOPPED; // player sound Alert Pseudo
+    this.playSoundAlertPseudo = SoundPseudo.status.STOPPED; // player sound Alert Log
+
     this.btnSoundName = "SoundOn";
 
 
@@ -89,7 +94,11 @@ componentDidMount() {
     }
     if(jsonReceive[0].type === ERRORLOGIN){
       this.echange = new TimeBreak();
-      this.playSoundAlertPseudo = Sound.status.PLAYING;
+      this.echange.messages = [];
+      this.echange.users = [];
+      let usr=new User();
+      usr.create("","");
+      this.playSoundAlertPseudo = SoundPseudo.status.PLAYING;
       Swal.fire({
         title: 'Erreur !',
         text: "Cet identifiant est déjà connecté",
@@ -97,7 +106,7 @@ componentDidMount() {
         confirmButtonText: 'OK'
       });
       this.cestok();
-    }
+    } 
 
   });
 }
@@ -169,10 +178,10 @@ componentDidMount() {
 
   AlertSound=(data)=>{ // Fonction sonore utlisée par le composant Login
     if (data === "play") {
-      this.playSoundAlert = Sound.status.PLAYING;
+      this.playSoundAlert = SoundLog.status.PLAYING;
     }
     else{
-      this.playSoundAlert = Sound.status.STOPPED;
+      this.playSoundAlert = SoundLog.status.STOPPED;
     }
     this.cestok();
   };
@@ -207,7 +216,7 @@ componentDidMount() {
         <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
         
          {/* SORTIE SON ALERT */}
-        <Sound
+        <SoundLog
             url={alertSoundLog}
             playStatus={this.playSoundAlert}
             playFromPosition={0}
@@ -267,7 +276,6 @@ componentDidMount() {
                     </div>
                     </div>
                     <div className="test">
-                    
                      <div className="item"><Gameboard /></div>
                      <div className="item"><PieceQueue /></div>
                     </div>
