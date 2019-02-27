@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Swal from "sweetalert2";
 
 
 class Disconnect extends Component {
@@ -11,8 +12,26 @@ class Disconnect extends Component {
         );
     }
     static _refreshPage() {
-        console.log("Clicked");
-        window.location.reload();
+        Swal.fire({
+            title: 'Es-tu sûr de vouloir te déconnecter ?',
+            text: "Tu pourras te reconnecter plus tard",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: "Oui, je veux me déconnecter"
+        }).then((_refreshPage) => {
+            if (_refreshPage.value) {
+                console.log("Clicked");
+                window.location.reload();
+                Swal.fire(
+                    'Déconnecté',
+                    "Tu t'es bien déconnecté.",
+                    'success'
+                )
+            }
+        })
+
     }
 }
 
