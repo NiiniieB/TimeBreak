@@ -9,8 +9,7 @@ import Socket from "./Component/Socket";
 
 //SOUNDS//
 import Sound from 'react-sound';
-import SoundPseudo from 'react-sound';
-import SoundLog from 'react-sound';
+import SoundAlert from 'react-sound';
 
 import alertSoundLog from "./sounds/errorLogSound.mp3";
 import alertSoundPseudo from "./sounds/errorPseudoSound.mp3";
@@ -51,8 +50,8 @@ class App extends Component {
     this.playSound= Sound.status.STOPPED; // player sound
     this.soundProject=""; // url des sons
 
-    this.playSoundAlert = SoundLog.status.STOPPED; // player sound Alert Pseudo
-    this.playSoundAlertPseudo = SoundPseudo.status.STOPPED; // player sound Alert Log
+    this.playSoundAlert = SoundAlert.status.STOPPED; // player sound Alert Pseudo
+    this.alertSoundUrl ="";
 
     this.btnSoundName = "SoundOn";
 
@@ -98,7 +97,7 @@ componentDidMount() {
       this.echange.users = [];
       let usr=new User();
       usr.create("","");
-      this.playSoundAlertPseudo = SoundPseudo.status.PLAYING;
+      this.alertSound("AlertPseudo");
       Swal.fire({
         title: 'Erreur !',
         text: "Cet identifiant est déjà connecté",
@@ -176,12 +175,14 @@ componentDidMount() {
     }
   }
 
-  AlertSound=(data)=>{ // Fonction sonore utlisée par le composant Login
-    if (data === "play") {
-      this.playSoundAlert = SoundLog.status.PLAYING;
+  alertSound=(data)=>{ // Fonction sonore utlisée par le composant Login
+    if (data === "alertSaisie") {
+      this.alertSoundUrl = alertSoundLog;
+      this.playSoundAlert = SoundAlert.status.PLAYING;
     }
-    else{
-      this.playSoundAlert = SoundLog.status.STOPPED;
+    if (data === "AlertPseudo"){
+      this.alertSoundUrl = alertSoundPseudo;
+      this.playSoundAlert = SoundAlert.status.PLAYING;
     }
     this.cestok();
   };
@@ -213,17 +214,12 @@ componentDidMount() {
       console.log("Client connecté");
       return (
       <div>
-        <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
+        <Login sound={this.alertSound} source={this.echange} callback={this.cestok}/>
         
          {/* SORTIE SON ALERT */}
-        <SoundLog
-            url={alertSoundLog}
+        <SoundAlert
+            url={this.alertSoundUrl}
             playStatus={this.playSoundAlert}
-            playFromPosition={0}
-        />
-        <SoundPseudo
-            url={alertSoundPseudo}
-            playStatus={this.playSoundAlertPseudo}
             playFromPosition={0}
         />
         <Footer/>
@@ -287,7 +283,7 @@ componentDidMount() {
          
         </div>
         <div className= "chatapp">
-          <Output source={this.echange}/>
+          <Output source={this.echange}/>http://localhost:3000/
           <Input source={this.echange} callback={this.cestok}/>
       
         </div>
