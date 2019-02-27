@@ -283,7 +283,7 @@ componentDidMount() {
          
         </div>
         <div className= "chatapp">
-          <Output source={this.echange}/>http://localhost:3000/
+          <Output source={this.echange}/>
           <Input source={this.echange} callback={this.cestok}/>
       
         </div>
