@@ -21,7 +21,7 @@ Find what you need into the [package.json](https://github.com/NiiniieB/TimeBreak
 
 ## Authors
 
-* **Romain Roux** - *Initial work* - [Rominshky](https://github.com/Rominshky)
+* **Romain Roux** - *Initial work* - [Rom1Roux](https://github.com/Rom1Roux)
 * **Mélanie Bétourné** - *Initial work* - [NiiniieB](https://github.com/NiiniieB)
 * **Ludovic Bordelais** - *Initial work* - [masta971](https://github.com/masta971)
 * **Eyal Bompuis** - *Initial work* - [Luteces](https://github.com/Luteces)
