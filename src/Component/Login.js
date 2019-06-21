@@ -28,10 +28,9 @@ class Login extends Component {
           this.props.source.me = user;
           Socket.emit(JSON.stringify([{ type: 2 }, user]));
           this.props.callback();
-          this.props.sound("stop");
           // document.getElementById("reset").reset(); //Reset data from login field
         } else {
-          this.props.sound("play");
+          this.props.sound("alertSaisie");
           Swal.fire({
             title: "Erreur !",
             text: "Cet identifiant n'existe pas",

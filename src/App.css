@@ -93,12 +93,15 @@ body{
   opacity: 0,5;
   width: 40%;
   height: 620px;
+  
 }
 
 .output {
   width: 900px;
   height: 500px;
   overflow:auto;
+  transform:rotate(180deg);
+  direction:rtl;
 }
 .input {
   width: 80%;
@@ -116,6 +119,7 @@ body{
   padding: 10px;
   overflow-wrap: break-word;
   width: 70%;
+  
 }
 .chat {
   display: flex;
@@ -177,7 +181,12 @@ body{
   justify-content: space-around;
   align-items: center;
   margin-left: 25%;
+
   
+}
+.rotateMsg{
+  transform:rotate(180deg);
+  direction:ltr;
 }
 li{
   list-style:none;
@@ -234,7 +243,7 @@ li{
     padding: 0;
     width: 1.5em;
     height: 1.5em;
-    border: 1px solid rgba(111, 145, 182, 0.3);;
+    border: 1px solid rgba(111, 145, 182, 0.3);
     
     }
     .piece-i {
@@ -299,7 +308,7 @@ li{
     }
     .titreJeu{
       color: white;
-      font-size: 0.8em;;
+      font-size: 0.7em;;
       text-align: center;  
       margin-left: 1%;
     }
@@ -334,6 +343,18 @@ li{
       background-position: center;
       width: 48px;
       height: 48px;
+    }
+    .help{
+  border:3px solid #6f2015;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-image: url(./img/help.png);
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center;
+  padding: 1%;
+  
     }
 
   

@@ -9,8 +9,10 @@ import Socket from "./Component/Socket";
 
 //SOUNDS//
 import Sound from 'react-sound';
+import SoundAlert from 'react-sound';
 
 import alertSoundLog from "./sounds/errorLogSound.mp3";
+import alertSoundPseudo from "./sounds/errorPseudoSound.mp3";
 import connectSound from "./sounds/connectSound.mp3";
 import receiveMsgSound from "./sounds/receiveMsgSound.mp3";
 import sendMsgSound from "./sounds/sendMsgSound.mp3";
@@ -45,8 +47,12 @@ class App extends Component {
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
 
-    this.playSound=""; // player sound
+    this.playSound= Sound.status.STOPPED; // player sound
     this.soundProject=""; // url des sons
+
+    this.playSoundAlert = SoundAlert.status.STOPPED; // player sound Alert Pseudo
+    this.alertSoundUrl ="";
+
     this.btnSoundName = "SoundOn";
 
 
@@ -87,6 +93,11 @@ componentDidMount() {
     }
     if(jsonReceive[0].type === ERRORLOGIN){
       this.echange = new TimeBreak();
+      this.echange.messages = [];
+      this.echange.users = [];
+      let usr=new User();
+      usr.create("","");
+      this.alertSound("AlertPseudo");
       Swal.fire({
         title: 'Erreur !',
         text: "Cet identifiant est déjà connecté",
@@ -94,7 +105,7 @@ componentDidMount() {
         confirmButtonText: 'OK'
       });
       this.cestok();
-    }
+    } 
 
   });
 }
@@ -164,12 +175,14 @@ componentDidMount() {
     }
   }
 
-  AlertSound=(data)=>{ // Fonction sonore utlisée par le composant Login
-    if (data === "play") {
-      this.playSoundAlert = Sound.status.PLAYING;
+  alertSound=(data)=>{ // Fonction sonore utlisée par le composant Login
+    if (data === "alertSaisie") {
+      this.alertSoundUrl = alertSoundLog;
+      this.playSoundAlert = SoundAlert.status.PLAYING;
     }
-    else{
-      this.playSoundAlert = Sound.status.STOPPED;
+    if (data === "AlertPseudo"){
+      this.alertSoundUrl = alertSoundPseudo;
+      this.playSoundAlert = SoundAlert.status.PLAYING;
     }
     this.cestok();
   };
@@ -178,6 +191,23 @@ componentDidMount() {
      this.setState({ sound: !this.state.sound });
      this.btnSoundName = this.state.sound ? "SoundOff" : "SoundOn"; // checkbox On / Off
     }
+  switchRules =()=>{
+    Swal.fire({
+      title: '',
+      html:
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/powerpoint.png"></img><div style="margin:10px;">Mettre le jeu en Pause</div></div></br>  ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/long-arrow-right.png"></img><div style="margin:10px;">Droite</div></div>' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/left-squared.png"></img><div style="margin:10px;">Gauche</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/up-squared.png"></img><div style="margin:10px;">Tourner les blocs</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/wired/48/000000/c.png"></img><div style="margin:10px;">Changer de bloc(3*)</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/dotty/48/000000/space-shuttle.png"></img><div style="margin:10px;">Descendre rapidement</div></div></br> ' +
+      '<div style="background-color: #ffffff;border:3px ridge #6f2015;border-radius:25%;display:table-cell;"><img src="https://img.icons8.com/carbon-copy/48/000000/down-squared.png"></img><div style="margin:10px;">Descendre directement</div></div></br> ',
+      width: 500,
+      padding: '0em 10em 0em 10em',
+      background: '#6f91b6',
+      backdrop:   `rgba(0,0,123,0.4)`
+    })
+  }
 
   render() {
     if (this.state.message !== "{}")
@@ -185,22 +215,23 @@ componentDidMount() {
     if (this.state.user !== "{}")
       this.traitePseudo();
     if (this.echange.me.pseudo ==="") {
-      console.log("I'm alive");
+      console.log("Client connecté");
       return (
       <div>
-        <Login sound={this.AlertSound} source={this.echange} callback={this.cestok}/>
+        <Login sound={this.alertSound} source={this.echange} callback={this.cestok}/>
         
          {/* SORTIE SON ALERT */}
-        <Sound
-            url={alertSoundLog}
+        <SoundAlert
+            url={this.alertSoundUrl}
             playStatus={this.playSoundAlert}
+            playFromPosition={0}
         />
         <Footer/>
         
       </div>);
     }
     else {
-      console.log("Log !");
+      console.log("Client Loggué !");
     return (
       <div>
         <div className="navbar">
@@ -236,13 +267,15 @@ componentDidMount() {
                     <div className="titreJeu">
                     <h1>Tetris</h1>
                     </div>
+                    <div>
+                    <button className="help" type="button" onClick={this.switchRules}></button>
+                    </div>
                     <div className="score">
-                      <p>Points: {points}</p>
-                      <p>Lines Cleared: {linesCleared}</p>
+                      <div>Points: {points}</div>
+                      <div>Lines Cleared: {linesCleared}</div>
                     </div>
                     </div>
                     <div className="test">
-                    
                      <div className="item"><Gameboard /></div>
                      <div className="item"><PieceQueue /></div>
                     </div>
