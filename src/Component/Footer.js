@@ -20,7 +20,7 @@ class Footer extends Component {
             </li>
       
             <li className="ItemGithub">
-              <a href="https://github.com/Rominshky">
+              <a href="https://github.com/Rom1Roux">
               <img className="ImgGithub" src={roro} alt="Github"/>
               </a>
             </li>

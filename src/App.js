@@ -42,7 +42,6 @@ class App extends Component {
     super(props);
 
     this.echange = new TimeBreak();
-
     this.state = { modif: false, message: "{}", user: "{}", etat: INIT, sound: true};
     this.address=window.location.href;
     this.address=this.address.substring(0,this.address.length-5)+"5000";
